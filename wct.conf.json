@@ -1,0 +1,8 @@
+{
+  "suites": ["app/test"],
+  "webserver": {
+    "pathMappings": [
+      {"/components/polymer-admin/app/bower_components": "bower_components"}
+    ]
+  }
+}
