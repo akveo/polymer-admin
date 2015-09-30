@@ -1,0 +1,140 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-buttons">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      .horizontal-section-container div {
+        width: 25%;
+      }
+
+      .horizontal-section-container .horizontal-section {
+        min-width: 130px;
+      }
+
+      paper-button {
+        display: block;
+        margin-bottom: 24px;
+      }
+
+      paper-button.colorful {
+        color: #4285f4;
+      }
+
+      paper-button[raised].colorful {
+        background: #4285f4;
+        color: #fff;
+      }
+
+      paper-button[toggles] {
+        transition: background-color 0.3s;
+      }
+
+      paper-button[toggles][active] {
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+
+      paper-button[toggles][active].colorful {
+        background-color: rgba(66, 133, 244, 0.25);
+      }
+
+      paper-button[toggles][active][raised].colorful {
+        background-color: rgba(66, 133, 244, 0.75);
+      }
+
+      paper-button.blue {
+        color: var(--paper-light-blue-500);
+        --paper-button-flat-focus-color: var(--paper-light-blue-50);
+      }
+      paper-button.blue:hover {
+        background: var(--paper-light-blue-50);
+      }
+      paper-button.red {
+        color: var(--paper-red-500);
+        --paper-button-flat-focus-color: var(--paper-red-50);
+      }
+      paper-button.red:hover {
+        background: var(--paper-red-50);
+      }
+      paper-button.green {
+        color: var(--paper-green-500);
+        --paper-button-flat-focus-color: var(--paper-green-50);
+      }
+      paper-button.green:hover {
+        background: var(--paper-green-50);
+      }
+      paper-button.orange {
+        color: var(--paper-orange-500);
+        --paper-button-flat-focus-color: var(--paper-orange-50);
+      }
+      paper-button.orange:hover {
+        background: var(--paper-orange-50);
+      }
+
+      paper-button.hover:hover {
+        background: #eee;
+      }
+
+      paper-button.ripple {
+        --paper-button-ink-color: var(--paper-pink-a200);
+      }
+    </style>
+
+    <div class="horizontal-section-container container-col-4">
+      <div>
+        <div class="horizontal-section">
+          <paper-button tabindex="0">button</paper-button>
+          <paper-button tabindex="0" class="colorful">colorful</paper-button>
+          <paper-button tabindex="0" disabled>disabled</paper-button>
+          <paper-button tabindex="0" noink>noink</paper-button>
+          <paper-button tabindex="0" class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+          <paper-button tabindex="0" class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
+        </div>
+      </div>
+
+      <div>
+        <div class="horizontal-section">
+          <paper-button tabindex="0" raised>button</paper-button>
+          <paper-button tabindex="0" raised class="colorful">colorful</paper-button>
+          <paper-button tabindex="0" raised disabled>disabled</paper-button>
+          <paper-button tabindex="0" raised noink>noink</paper-button>
+          <paper-button tabindex="0" raised class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+          <paper-button tabindex="0" raised class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
+        </div>
+      </div>
+
+      <div>
+        <div class="horizontal-section">
+          <paper-button tabindex="0" toggles>button</paper-button>
+          <paper-button tabindex="0" toggles raised noink>noink</paper-button>
+          <paper-button tabindex="0" toggles active class="colorful">colorful</paper-button>
+          <paper-button tabindex="0" toggles raised active class="colorful">colorful</paper-button>
+          <paper-button tabindex="0" toggles class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+          <paper-button tabindex="0" toggles class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
+        </div>
+      </div>
+
+      <div>
+        <div class="horizontal-section">
+          <paper-button tabindex="0" class="blue ripple">button</paper-button>
+          <paper-button tabindex="0" class="red ripple">noink</paper-button>
+          <paper-button tabindex="0" class="orange ripple">colorful</paper-button>
+          <paper-button tabindex="0" class="green ripple">colorful</paper-button>
+          <paper-button tabindex="0" class="red ripple"><iron-icon icon="check"></iron-icon>ok</paper-button>
+          <paper-button tabindex="0" class="blue ripple"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-buttons'
+      });
+    })();
+  </script>
+
+</dom-module>

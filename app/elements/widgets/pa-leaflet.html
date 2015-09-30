@@ -1,0 +1,41 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-leaflet">
+  <template>
+    <link rel="stylesheet" href="../../../bower_components/leaflet/dist/leaflet.css">
+    <style>
+      #leaflet-map {
+        height: 300px;
+      }
+    </style>
+
+    <div id="leaflet-map"></div>
+  </template>
+
+  <script src="../../../bower_components/leaflet/dist/leaflet-src.js"></script>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-leaflet'
+      });
+
+      setTimeout(function(){
+        var map = L.map('leaflet-map').setView([51.505, -0.09], 13);
+
+        L.Icon.Default.imagePath = '../../../bower_components/leaflet/dist/images';
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .openPopup();
+      }, 100);
+
+    })();
+  </script>
+
+</dom-module>

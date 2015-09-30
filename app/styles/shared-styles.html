@@ -2,7 +2,72 @@
 <dom-module id="shared-styles">
   <template>
     <style>
+      paper-material {
+        border-radius: 2px;
+        height: 100%;
+        padding: 16px 0 16px 0;
+        width: calc(98.66% - 16px);
+        margin: 16px auto;
+        background: white;
+      }
 
+      .page-content paper-material {
+        height: 360px;
+        margin-top: 16px;
+        margin-bottom: 32px;
+      }
+
+      @media (min-width: 1200px) {
+        .page-content-2 {
+          margin: 0 -12px;
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .page-content-2 paper-material {
+          width: calc(50% - 92px);
+          margin: 16px;
+        }
+      }
+
+      .widget-title {
+        padding-bottom: 12px;
+      }
+
+      .widget-title h2 {
+        margin: 0;
+        display: inline-block
+      }
+      .widget-title paper-icon-button {
+        top: -5px;
+      }
+
+      google-chart {
+        height: 300px;
+        width: 100%;
+      }
+
+      @media (max-width: 600px) {
+        paper-material {
+          --menu-container-display: none;
+          width: calc(97.33% - 32px);
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      }
+
+      @media (min-width: 601px) {
+        paper-material {
+          width: calc(98% - 46px);
+          margin-bottom: 32px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+
+      .horizontal-section-container {
+        @apply(--layout-horizontal);
+      }
     </style>
   </template>
 </dom-module>

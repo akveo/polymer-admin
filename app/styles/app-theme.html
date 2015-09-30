@@ -45,18 +45,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     --menu-link-color: #111111;
   }
 
+  .top-toolbar {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+  }
+
   /* General styles */
   paper-scroll-header-panel {
     height: 100%;
-  }
-
-  paper-material {
-    border-radius: 2px;
-    height: 100%;
-    padding: 16px 0 16px 0;
-    width: calc(98.66% - 16px);
-    margin: 16px auto;
-    background: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.12);
   }
 
   paper-menu iron-icon {
@@ -90,45 +86,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     padding: 0 16px;
   }
 
-  paper-toolbar.tall .app-name {
-    font-size: 40px;
-    font-weight: 300;
-    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
-  }
-
-  .page-content paper-material {
-    height: 360px;
-    margin-top: 16px;
-    margin-bottom: 32px;
-  }
-
-  @media (min-width: 1200px) {
-    .page-content-2 {
-      margin: 0 -12px;
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .page-content-2 paper-material {
-      width: calc(50% - 92px);
-      margin: 16px;
-    }
-  }
-
-  .widget-title {
-    padding-bottom: 12px;
-  }
-
-  .widget-title h2 {
-    margin: 0;
-    display: inline-block
-  }
-  .widget-title paper-icon-button {
-    top: -5px;
-  }
-
   iron-pages {
     padding: 24px 16px;
   }
@@ -138,39 +95,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     text-decoration: none;
   }
 
-  google-map {
-    height: 300px;
-  }
-
-  google-chart {
-    height: 300px;
-    width: 100%;
-  }
-
-  /* Breakpoints */
-
-  /* Small */
-  @media (max-width: 600px) {
-
-    paper-material {
-      --menu-container-display: none;
-      width: calc(97.33% - 32px);
-      padding-left: 16px;
-      padding-right: 16px;
-    }
-
-  }
-
   /* Tablet+ */
   @media (min-width: 601px) {
-
-    paper-material {
-      width: calc(98% - 46px);
-      margin-bottom: 32px;
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-
     #drawer.paper-drawer-panel > [drawer] {
       border-right: 1px solid rgba(0, 0, 0, 0.14);
     }

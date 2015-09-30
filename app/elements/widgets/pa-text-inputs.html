@@ -1,0 +1,28 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-text-inputs">
+  <template>
+    <style include="shared-styles"></style>
+
+    <div class="vertical-section">
+      <paper-input label="label"></paper-input>
+
+      <paper-input label="password" type="password"></paper-input>
+
+      <paper-input label="disabled" disabled></paper-input>
+
+      <paper-input label="label" char-counter></paper-input>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-text-inputs'
+      });
+    })();
+  </script>
+
+</dom-module>

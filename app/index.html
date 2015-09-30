@@ -62,7 +62,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <paper-scroll-header-panel fixed>
 
-    <paper-toolbar>
+    <paper-toolbar class="top-toolbar">
       <h1 class="flex"><a data-route="dashboard" href="/" on-click="onDataRouteClick">Polymer Admin</a></h1>
       <paper-icon-button icon="search"></paper-icon-button>
       <paper-icon-button icon="refresh"></paper-icon-button>
@@ -71,7 +71,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-drawer-panel id="paperDrawerPanel">
 
       <paper-scroll-header-panel drawer>
-
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
 
           <a data-route="dashboard" href="/" on-click="onDataRouteClick">
@@ -82,11 +81,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a data-route="charts" href="/charts" on-click="onDataRouteClick">
             <iron-icon icon="trending-up"></iron-icon>
             <span>Charts</span>
-          </a>
-
-          <a data-route="tables" href="/tables" on-click="onDataRouteClick">
-            <iron-icon icon="apps"></iron-icon>
-            <span>Tables</span>
           </a>
 
           <a data-route="form-elements" href="/form-elements" on-click="onDataRouteClick">
@@ -104,6 +98,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Maps</span>
           </a>
 
+          <a data-route="tables" href="/tables" on-click="onDataRouteClick">
+            <iron-icon icon="apps"></iron-icon>
+            <span>Tables</span>
+          </a>
+
           <a data-route="user-profile" href="/user-profile" on-click="onDataRouteClick">
             <iron-icon icon="accessibility"></iron-icon>
             <span>User Profile</span>
@@ -117,241 +116,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
           <section data-route="dashboard">
-
-            <div class="widget-title">
-              <h2>Dashboard</h2>
-              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            </div>
-
-            <div class="page-content page-content-2">
-
-              <paper-material elevation="1">
-                <h3>Combo Chart</h3>
-                <style>
-                  .google-chart-wrapper {
-                    height: 300px;
-                    width: 100%;
-                  }
-                  google-chart {
-                    height: 300px;
-                    width: 100%;
-                  }
-                </style>
-                <google-chart
-                    type='combo'
-                    options='{"seriesType": "bars", "series": {"2": {"type": "line"}}}'
-                    data='[ ["Day", "A", "B", "C"],
-                       ["Mon", 20, 45, 28],
-                       ["Tue", 31, 66, 38],
-                       ["Wed", 50, 80, 55],
-                       ["Thu", 77, 50, 77],
-                       ["Fri", 68, 15, 66] ]'>
-                </google-chart>
-
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Awesome Video</h3>
-                <google-youtube
-                    video-id="jVn8tlnwAEs"
-                    height="270px"
-                    width="480px"
-                    rel="0"
-                    autoplay="0">
-                </google-youtube>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Latest News</h3>
-
-                <style>
-                  .google-feeds-wrapper {
-                    height: 280px;
-                    overflow-y: scroll;
-                    margin-top: 24px;
-                  }
-                  .gfc-resultsHeader {
-                    border: none;
-                  }
-                  .gf-title {}
-                  .gf-title a {
-                    color: #3F51B5;
-                    text-decoration: none;
-                  }
-                  .gf-relativePublishedDate {
-                    font-size: 12px;
-                  }
-                  .gf-snippet {
-                    display: none;
-                  }
-                  .gfc-result {
-                    margin-bottom: 18px;
-                  }
-                </style>
-
-                <div class="google-feeds-wrapper">
-                  <google-feeds id="feeder"></google-feeds>
-                </div>
-
-                <script>
-                  var feeder = document.getElementById("feeder");
-                  feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
-                </script>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>My Calendar</h3>
-              </paper-material>
-
-            </div>
+            <pa-dashboard></pa-dashboard>
           </section>
 
           <section data-route="charts">
-
-            <div class="widget-title">
-              <h2>Charts</h2>
-              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            </div>
-
-            <div class="page-content page-content-2">
-              <paper-material elevation="1">
-                <h3>Pie Chart</h3>
-
-                <google-chart
-                    type="pie"
-                    id="selection-chart"
-                    options='{"title": "Distribution of days in 2001H1"}'
-                    cols='[ {"label": "Month", "type": "string"},{"label": "Days", "type": "number"} ]'
-                    rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
-                </google-chart>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Area Chart</h3>
-                <google-chart
-                    type='area'
-                    options='{"title": "Days in a month"}'
-                    cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
-                    rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
-                </google-chart>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Bar chart</h3>
-                <google-chart
-                    type='bar'
-                    options='{"title": "Days in a month"}'
-                    cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
-                    rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
-                </google-chart>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Geo Chart</h3>
-                <google-chart
-                    type='geo'
-                    data='[ ["Country", "Popularity"],
-                   ["Germany", 200],
-                   ["United States", 300],
-                   ["Brazil", 400],
-                   ["Canada", 500],
-                   ["France", 600],
-                   ["RU", 700] ]'>
-                        </google-chart>
-              </paper-material>
-            </div>
+            <pa-charts></pa-charts>
           </section>
 
           <section data-route="tables">
-
-            <div class="widget-title">
-              <h2>Tables</h2>
-              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            </div>
-
-            <div class="page-content">
-              <paper-material elevation="1">
-                <h3>Widget 1</h3>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Widget 2</h3>
-              </paper-material>
-            </div>
+            <pa-tables></pa-tables>
           </section>
 
           <section data-route="form-elements">
-
-            <div class="widget-title">
-              <h2>Form Elements</h2>
-              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            </div>
-
-            <div class="page-content page-content-2">
-              <paper-material elevation="1">
-                <h3>Widget 1</h3>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Widget 2</h3>
-              </paper-material>
-            </div>
+            <pa-form-elements></pa-form-elements>
           </section>
 
           <section data-route="ui-elements">
-
-            <div class="widget-title">
-              <h2>UI Elements</h2>
-              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            </div>
-
-            <div class="page-content page-content-2">
-              <paper-material elevation="1">
-                <h3>Widget 1</h3>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Widget 2</h3>
-              </paper-material>
-            </div>
+            <pa-ui-elements></pa-ui-elements>
           </section>
 
           <section data-route="maps">
-
-            <div class="widget-title">
-              <h2>Maps</h2>
-              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            </div>
-
-            <div class="page-content">
-              <paper-material elevation="1">
-                <h3>Google Maps</h3>
-                <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
-                  <google-map-marker latitude="37.779" longitude="-122.3892"
-                                     draggable="true" title="Go Giants!"></google-map-marker>
-                  <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
-                </google-map>
-              </paper-material>
-
-              <paper-material elevation="1">
-                <h3>Google Streetview</h3>
-
-              </paper-material>
-            </div>
+            <pa-maps></pa-maps>
           </section>
 
           <section data-route="user-profile">
-
-            <div class="widget-title">
-              <h2>User Profile</h2>
-              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            </div>
-
-            <div class="page-content">
-              <paper-material elevation="1">
-                <h3>Widget 1</h3>
-              </paper-material>
-            </div>
+            <pa-user-profile></pa-user-profile>
           </section>
 
         </iron-pages>

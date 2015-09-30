@@ -1,0 +1,50 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-ui-elements">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      .page-content paper-material {
+        height: 460px;
+      }
+    </style>
+
+    <div class="widget-title">
+      <h2>UI Elements</h2>
+      <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+    </div>
+
+    <div class="page-content page-content-2">
+      <paper-material elevation="1">
+        <h3>Buttons</h3>
+        <pa-buttons></pa-buttons>
+      </paper-material>
+
+      <paper-material elevation="1">
+        <h3>Paper Fab</h3>
+        <pa-paper-fab></pa-paper-fab>
+      </paper-material>
+
+      <paper-material elevation="1">
+        <h3>Sliders</h3>
+        <pa-sliders></pa-sliders>
+      </paper-material>
+
+      <paper-material elevation="1">
+        <h3>Toggle Button</h3>
+        <pa-toggle-buttons></pa-toggle-buttons>
+      </paper-material>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-ui-elements'
+      });
+    })();
+  </script>
+
+</dom-module>

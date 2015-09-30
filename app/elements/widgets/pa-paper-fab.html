@@ -1,0 +1,87 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-paper-fab">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      .horizontal-section {
+        min-width: 200px;
+      }
+
+      .horizontal-section-container div {
+        width: 33.3%;
+        padding-top: 12px;
+      }
+
+      paper-fab {
+        display: block;
+        margin-bottom:24px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      paper-fab.blue {
+        --paper-fab-background: var(--paper-light-blue-500);
+        --paper-fab-keyboard-focus-background: var(--paper-light-blue-900);
+      }
+
+      paper-fab.red {
+        --paper-fab-background: var(--paper-red-500);
+        --paper-fab-keyboard-focus-background: var(--paper-red-900);
+      }
+
+      paper-fab.green {
+        --paper-fab-background: var(--paper-green-500);
+        --paper-fab-keyboard-focus-background: var(--paper-green-900);
+      }
+
+      paper-fab.orange {
+        --paper-fab-background: var(--paper-orange-500);
+        --paper-fab-keyboard-focus-background: var(--paper-orange-900);
+      }
+    </style>
+
+    <div class="horizontal-section-container">
+      <div>
+        <div class="horizontal-section">
+          <paper-fab icon="arrow-forward" title="arrow-forward" tabindex="0"></paper-fab>
+          <paper-fab icon="create" title="create" tabindex="0"></paper-fab>
+          <paper-fab icon="favorite" title="heart" tabindex="0"></paper-fab>
+          <paper-fab mini icon="done" title="done" tabindex="0"></paper-fab>
+          <paper-fab mini icon="reply" title="reply" tabindex="0"></paper-fab>
+        </div>
+      </div>
+
+      <div>
+        <div class="horizontal-section">
+          <paper-fab disabled icon="arrow-forward" title="arrow-forward" tabindex="0"></paper-fab>
+          <paper-fab disabled icon="create" title="create" tabindex="0"></paper-fab>
+          <paper-fab disabled icon="favorite" title="heart" tabindex="0"></paper-fab>
+          <paper-fab disabled mini icon="done" title="done" tabindex="0"></paper-fab>
+          <paper-fab disabled mini icon="reply" title="reply" tabindex="0"></paper-fab>
+        </div>
+      </div>
+
+      <div>
+        <div class="horizontal-section">
+          <paper-fab icon="arrow-forward" title="arrow-forward" tabindex="0" class="blue"></paper-fab>
+          <paper-fab icon="create" title="create" tabindex="0" class="red"></paper-fab>
+          <paper-fab icon="favorite" title="heart" tabindex="0" class="orange"></paper-fab>
+          <paper-fab mini icon="done" title="done" tabindex="0" class="green"></paper-fab>
+          <paper-fab mini icon="reply" title="reply" tabindex="0" class="blue"></paper-fab>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-paper-fab'
+      });
+    })();
+  </script>
+
+</dom-module>

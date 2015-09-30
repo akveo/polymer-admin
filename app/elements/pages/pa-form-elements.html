@@ -1,0 +1,46 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-form-elements">
+  <template>
+    <style include="shared-styles"></style>
+
+    <div class="widget-title">
+      <h2>Form Elements</h2>
+      <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+    </div>
+
+    <div class="page-content page-content-2">
+      <paper-material elevation="1">
+        <h3>Text Input</h3>
+        <pa-text-inputs></pa-text-inputs>
+      </paper-material>
+
+      <paper-material elevation="1">
+        <h3>Validation</h3>
+        <pa-inputs-validation></pa-inputs-validation>
+      </paper-material>
+
+      <paper-material elevation="1">
+        <h3>Checkbox</h3>
+        <pa-checkboxes></pa-checkboxes>
+      </paper-material>
+
+      <paper-material elevation="1">
+        <h3>Radio</h3>
+        <pa-radio-buttons></pa-radio-buttons>
+      </paper-material>
+
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-form-elements'
+      });
+    })();
+  </script>
+
+</dom-module>
