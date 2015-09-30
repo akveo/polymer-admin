@@ -24,20 +24,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     // Routes
     page('/', scrollToTop, function() {
-      app.route = 'home';
+      app.route = 'dashboard';
     });
 
-    page('/users', scrollToTop, function() {
-      app.route = 'users';
+    page('/charts', scrollToTop, function() {
+      app.route = 'charts';
     });
 
-    page('/users/:name', scrollToTop, function(data) {
-      app.route = 'user-info';
-      app.params = data.params;
+    page('/tables', scrollToTop, function() {
+      app.route = 'tables';
     });
 
-    page('/contact', scrollToTop, function() {
-      app.route = 'contact';
+    page('/form-elements', scrollToTop, function() {
+      app.route = 'form-elements';
+    });
+
+    page('/ui-elements', scrollToTop, function() {
+      app.route = 'ui-elements';
+    });
+
+    page('/maps', scrollToTop, function() {
+      app.route = 'maps';
+    });
+
+    page('/user-profile', scrollToTop, function() {
+      app.route = 'user-profile';
+    });
+
+    page('/dashboard', scrollToTop, function() {
+      app.route = 'dashboard';
+    });
+
+    page('/dashboard', scrollToTop, function() {
+      app.route = 'dashboard';
     });
 
     // add #! before urls

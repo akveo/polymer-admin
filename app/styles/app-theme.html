@@ -46,13 +46,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
 
   /* General styles */
-
-  #drawerToolbar {
-    color: var(--secondary-text-color);
-    background-color: var(--drawer-menu-color);
-    border-bottom: var(--drawer-toolbar-border-color);
-  }
-
   paper-scroll-header-panel {
     height: 100%;
   }
@@ -105,26 +98,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     transform-origin: left center;
   }
 
-  #mainToolbar .middle-container  {
-    height: 100%;
-    margin-left: 48px;
+  .page-content paper-material {
+    height: 360px;
+    margin-top: 16px;
+    margin-bottom: 32px;
   }
 
-  #mainToolbar:not(.tall) .middle {
-    font-size: 18px;
-    padding-bottom: 0;
+  @media (min-width: 1200px) {
+    .page-content-2 {
+      margin: 0 -12px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .page-content-2 paper-material {
+      width: calc(50% - 92px);
+      margin: 16px;
+    }
   }
 
-  #mainToolbar .bottom {
-    margin-left: 48px;
-    /* Required for main area's paper-scroll-header-panel custom condensing transformation */
-    -webkit-transform-origin: left center;
-    transform-origin: left center;
+  .widget-title {
+    padding-bottom: 12px;
   }
 
-  /* Height of the scroll area */
-  .content {
-    height: 900px;
+  .widget-title h2 {
+    margin: 0;
+    display: inline-block
+  }
+  .widget-title paper-icon-button {
+    top: -5px;
+  }
+
+  iron-pages {
+    padding: 24px 16px;
+  }
+
+  h1 a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  google-map {
+    height: 300px;
+  }
+
+  google-chart {
+    height: 300px;
+    width: 100%;
   }
 
   /* Breakpoints */
@@ -137,23 +157,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       width: calc(97.33% - 32px);
       padding-left: 16px;
       padding-right: 16px;
-    }
-
-    paper-toolbar.tall .app-name {
-      font-size: 24px;
-      font-weight: 400;
-    }
-
-    #drawer .paper-toolbar {
-      margin-left: 16px;
-    }
-
-    #overlay {
-      min-width: 360px;
-    }
-
-    .bg {
-      background: white;
     }
 
   }
@@ -171,11 +174,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     #drawer.paper-drawer-panel > [drawer] {
       border-right: 1px solid rgba(0, 0, 0, 0.14);
     }
+  }
 
+  /* Desktop + */
+  @media (min-width: 640px) {
     iron-pages {
-      padding: 48px 62px;
+      padding: 24px 36px;
     }
-
   }
 
   /* Material Design Adaptive Breakpoints */

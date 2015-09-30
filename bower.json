@@ -7,7 +7,14 @@
     "paper-elements": "PolymerElements/paper-elements#^1.0.1",
     "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "neon-elements": "PolymerElements/neon-elements#^1.0.0",
-    "page": "visionmedia/page.js#~1.6.3"
+    "page": "visionmedia/page.js#~1.6.3",
+    "google-map": "GoogleWebComponents/google-map#~1.1.2",
+    "google-calendar": "GoogleWebComponents/google-calendar#~1.0.1",
+    "google-signin": "GoogleWebComponents/google-signin#~1.1.0",
+    "google-streetview-pano": "GoogleWebComponents/google-streetview-pano#~1.0.2",
+    "google-youtube": "GoogleWebComponents/google-youtube#~1.1.2",
+    "google-feeds": "GoogleWebComponents/google-feeds#~1.0.1",
+    "google-chart": "GoogleWebComponents/google-chart#~1.0.3"
   },
   "devDependencies": {
     "web-component-tester": "*",

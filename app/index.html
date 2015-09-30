@@ -15,9 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="generator" content="Polymer Starter Kit" />
-  <title>Polymer Starter Kit</title>
-  <!-- Place favicon.ico in the `app/` directory -->
+  <title>Polymer Admin Template</title>
 
   <!-- Chrome for Android theme color -->
   <meta name="theme-color" content="#2E3AA1">
@@ -47,7 +45,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <!-- endbuild-->
 
   <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
-  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
   <!-- endbuild -->
 
   <!-- will be replaced with elements/elements.vulcanized.html -->
@@ -56,154 +54,317 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <!-- For shared styles, shared-styles.html import in elements.html -->
   <style is="custom-style" include="shared-styles"></style>
-
 </head>
 
 <body unresolved class="fullbleed layout vertical">
-  <span id="browser-sync-binding"></span>
-  <template is="dom-bind" id="app">
+<span id="browser-sync-binding"></span>
+<template is="dom-bind" id="app">
+
+  <paper-scroll-header-panel fixed>
+
+    <paper-toolbar>
+      <h1 class="flex"><a data-route="dashboard" href="/" on-click="onDataRouteClick">Polymer Admin</a></h1>
+      <paper-icon-button icon="search"></paper-icon-button>
+      <paper-icon-button icon="refresh"></paper-icon-button>
+    </paper-toolbar>
 
     <paper-drawer-panel id="paperDrawerPanel">
-      <!-- Drawer Scroll Header Panel -->
-      <paper-scroll-header-panel drawer fixed>
 
-        <!-- Drawer Toolbar -->
-        <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title">Menu</span>
-        </paper-toolbar>
+      <paper-scroll-header-panel drawer>
 
-        <!-- Drawer Content -->
         <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
-          <a data-route="home" href="/" on-click="onDataRouteClick">
-            <iron-icon icon="home"></iron-icon>
-            <span>Home</span>
+
+          <a data-route="dashboard" href="/" on-click="onDataRouteClick">
+            <iron-icon icon="dashboard"></iron-icon>
+            <span>Dashboard</span>
           </a>
 
-          <a data-route="users" href="/users" on-click="onDataRouteClick">
-            <iron-icon icon="info"></iron-icon>
-            <span>Users</span>
+          <a data-route="charts" href="/charts" on-click="onDataRouteClick">
+            <iron-icon icon="trending-up"></iron-icon>
+            <span>Charts</span>
           </a>
 
-          <a data-route="contact" href="/contact" on-click="onDataRouteClick">
-            <iron-icon icon="mail"></iron-icon>
-            <span>Contact</span>
+          <a data-route="tables" href="/tables" on-click="onDataRouteClick">
+            <iron-icon icon="apps"></iron-icon>
+            <span>Tables</span>
           </a>
+
+          <a data-route="form-elements" href="/form-elements" on-click="onDataRouteClick">
+            <iron-icon icon="input"></iron-icon>
+            <span>Form Elements</span>
+          </a>
+
+          <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
+            <iron-icon icon="hardware:laptop"></iron-icon>
+            <span>UI Elements</span>
+          </a>
+
+          <a data-route="maps" href="/maps" on-click="onDataRouteClick">
+            <iron-icon icon="maps:pin-drop"></iron-icon>
+            <span>Maps</span>
+          </a>
+
+          <a data-route="user-profile" href="/user-profile" on-click="onDataRouteClick">
+            <iron-icon icon="accessibility"></iron-icon>
+            <span>User Profile</span>
+          </a>
+
         </paper-menu>
       </paper-scroll-header-panel>
 
-      <!-- Main Area -->
-      <paper-scroll-header-panel main condenses keep-condensed-header>
+      <paper-scroll-header-panel main>
 
-        <!-- Main Toolbar -->
-        <paper-toolbar id="mainToolbar" class="tall">
-          <paper-icon-button id="paperToggle" icon="menu" paper-drawer-toggle></paper-icon-button>
-          <span class="flex"></span>
+        <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
-          <!-- Toolbar icons -->
-          <paper-icon-button icon="refresh"></paper-icon-button>
-          <paper-icon-button icon="search"></paper-icon-button>
+          <section data-route="dashboard">
 
-          <!-- Application name -->
-          <div class="middle middle-container center horizontal layout">
-            <div class="app-name">Polymer Starter Kit</div>
-          </div>
+            <div class="widget-title">
+              <h2>Dashboard</h2>
+              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            </div>
 
-          <!-- Application sub title -->
-          <div class="bottom bottom-container center horizontal layout">
-            <div class="bottom-title paper-font-subhead">The future of the web today</div>
-          </div>
+            <div class="page-content page-content-2">
 
-        </paper-toolbar>
-
-        <!-- Main Content -->
-        <div class="content">
-          <iron-pages attr-for-selected="data-route" selected="{{route}}">
-
-            <section data-route="home">
               <paper-material elevation="1">
-                <my-greeting></my-greeting>
+                <h3>Combo Chart</h3>
+                <style>
+                  .google-chart-wrapper {
+                    height: 300px;
+                    width: 100%;
+                  }
+                  google-chart {
+                    height: 300px;
+                    width: 100%;
+                  }
+                </style>
+                <google-chart
+                    type='combo'
+                    options='{"seriesType": "bars", "series": {"2": {"type": "line"}}}'
+                    data='[ ["Day", "A", "B", "C"],
+                       ["Mon", 20, 45, 28],
+                       ["Tue", 31, 66, 38],
+                       ["Wed", 50, 80, 55],
+                       ["Thu", 77, 50, 77],
+                       ["Fri", 68, 15, 66] ]'>
+                </google-chart>
 
-                <p class="paper-font-subhead">You now have:</p>
-                <my-list></my-list>
-
-                <p class="paper-font-body2">Looking for more Web App layouts? Check out our <a href="https://github.com/PolymerElements/app-layout-templates">layouts</a> collection. You can also <a href="http://polymerelements.github.io/app-layout-templates/">preview</a> them live.</p>
               </paper-material>
+
               <paper-material elevation="1">
-                <p class="paper-font-body2">This is another card.</p>
+                <h3>Awesome Video</h3>
+                <google-youtube
+                    video-id="jVn8tlnwAEs"
+                    height="270px"
+                    width="480px"
+                    rel="0"
+                    autoplay="0">
+                </google-youtube>
               </paper-material>
 
-              <paper-material elevation="1" class="paper-font-body2">
-                <h1 id="license">License</h1>
-                <p>Everything in this repo is BSD style license unless otherwise specified.</p>
-                <p>Copyright (c) 2015 The Polymer Authors. All rights reserved.</p>
-                <p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
-                <ul>
-                <li>Redistributions of source code must retain the above copyright
-                notice, this list of conditions and the following disclaimer.</li>
-                <li>Redistributions in binary form must reproduce the above
-                copyright notice, this list of conditions and the following disclaimer
-                in the documentation and/or other materials provided with the
-                distribution.</li>
-                <li>Neither the name of Google Inc. nor the names of its
-                contributors may be used to endorse or promote products derived from
-                this software without specific prior written permission.</li>
-                </ul>
-                <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
-              </paper-material>
-
-            </section>
-
-            <section data-route="users">
               <paper-material elevation="1">
-                <h2 class="page-title">Users</h2>
-                <p>This is the users section</p>
-                <a href="/users/Rob">Rob</a>
-              </paper-material>
-            </section>
+                <h3>Latest News</h3>
 
-            <section data-route="user-info">
+                <style>
+                  .google-feeds-wrapper {
+                    height: 280px;
+                    overflow-y: scroll;
+                    margin-top: 24px;
+                  }
+                  .gfc-resultsHeader {
+                    border: none;
+                  }
+                  .gf-title {}
+                  .gf-title a {
+                    color: #3F51B5;
+                    text-decoration: none;
+                  }
+                  .gf-relativePublishedDate {
+                    font-size: 12px;
+                  }
+                  .gf-snippet {
+                    display: none;
+                  }
+                  .gfc-result {
+                    margin-bottom: 18px;
+                  }
+                </style>
+
+                <div class="google-feeds-wrapper">
+                  <google-feeds id="feeder"></google-feeds>
+                </div>
+
+                <script>
+                  var feeder = document.getElementById("feeder");
+                  feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
+                </script>
+              </paper-material>
+
               <paper-material elevation="1">
-                <h2 class="page-title">
-                User:<span>{{params.name}}</span>
-                </h2>
-                <div>This is <span>{{params.name}}</span>'s section</div>
+                <h3>My Calendar</h3>
               </paper-material>
-            </section>
 
-            <section data-route="contact">
+            </div>
+          </section>
+
+          <section data-route="charts">
+
+            <div class="widget-title">
+              <h2>Charts</h2>
+              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            </div>
+
+            <div class="page-content page-content-2">
               <paper-material elevation="1">
-                <h2 class="page-title">Contact</h2>
-                <p>This is the contact section</p>
-              </paper-material>
-            </section>
+                <h3>Pie Chart</h3>
 
-          </iron-pages>
-        </div>
+                <google-chart
+                    type="pie"
+                    id="selection-chart"
+                    options='{"title": "Distribution of days in 2001H1"}'
+                    cols='[ {"label": "Month", "type": "string"},{"label": "Days", "type": "number"} ]'
+                    rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
+                </google-chart>
+              </paper-material>
+
+              <paper-material elevation="1">
+                <h3>Area Chart</h3>
+                <google-chart
+                    type='area'
+                    options='{"title": "Days in a month"}'
+                    cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
+                    rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
+                </google-chart>
+              </paper-material>
+
+              <paper-material elevation="1">
+                <h3>Bar chart</h3>
+                <google-chart
+                    type='bar'
+                    options='{"title": "Days in a month"}'
+                    cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
+                    rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
+                </google-chart>
+              </paper-material>
+
+              <paper-material elevation="1">
+                <h3>Geo Chart</h3>
+                <google-chart
+                    type='geo'
+                    data='[ ["Country", "Popularity"],
+                   ["Germany", 200],
+                   ["United States", 300],
+                   ["Brazil", 400],
+                   ["Canada", 500],
+                   ["France", 600],
+                   ["RU", 700] ]'>
+                        </google-chart>
+              </paper-material>
+            </div>
+          </section>
+
+          <section data-route="tables">
+
+            <div class="widget-title">
+              <h2>Tables</h2>
+              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            </div>
+
+            <div class="page-content">
+              <paper-material elevation="1">
+                <h3>Widget 1</h3>
+              </paper-material>
+
+              <paper-material elevation="1">
+                <h3>Widget 2</h3>
+              </paper-material>
+            </div>
+          </section>
+
+          <section data-route="form-elements">
+
+            <div class="widget-title">
+              <h2>Form Elements</h2>
+              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            </div>
+
+            <div class="page-content page-content-2">
+              <paper-material elevation="1">
+                <h3>Widget 1</h3>
+              </paper-material>
+
+              <paper-material elevation="1">
+                <h3>Widget 2</h3>
+              </paper-material>
+            </div>
+          </section>
+
+          <section data-route="ui-elements">
+
+            <div class="widget-title">
+              <h2>UI Elements</h2>
+              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            </div>
+
+            <div class="page-content page-content-2">
+              <paper-material elevation="1">
+                <h3>Widget 1</h3>
+              </paper-material>
+
+              <paper-material elevation="1">
+                <h3>Widget 2</h3>
+              </paper-material>
+            </div>
+          </section>
+
+          <section data-route="maps">
+
+            <div class="widget-title">
+              <h2>Maps</h2>
+              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            </div>
+
+            <div class="page-content">
+              <paper-material elevation="1">
+                <h3>Google Maps</h3>
+                <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
+                  <google-map-marker latitude="37.779" longitude="-122.3892"
+                                     draggable="true" title="Go Giants!"></google-map-marker>
+                  <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
+                </google-map>
+              </paper-material>
+
+              <paper-material elevation="1">
+                <h3>Google Streetview</h3>
+
+              </paper-material>
+            </div>
+          </section>
+
+          <section data-route="user-profile">
+
+            <div class="widget-title">
+              <h2>User Profile</h2>
+              <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+            </div>
+
+            <div class="page-content">
+              <paper-material elevation="1">
+                <h3>Widget 1</h3>
+              </paper-material>
+            </div>
+          </section>
+
+        </iron-pages>
       </paper-scroll-header-panel>
+
     </paper-drawer-panel>
 
-    <!-- Uncomment next block to enable Service Worker support (1/2) -->
-    <!--
-    <paper-toast id="caching-complete"
-                 duration="6000"
-                 text="Caching complete! This app will work offline.">
-    </paper-toast>
+  </paper-scroll-header-panel>
 
-    <platinum-sw-register auto-register
-                          clients-claim
-                          skip-waiting
-                          on-service-worker-installed="displayInstalledToast">
-      <platinum-sw-cache default-cache-strategy="fastest"
-                         cache-config-file="cache-config.json">
-      </platinum-sw-cache>
-    </platinum-sw-register>
-    -->
+</template>
 
-  </template>
-
-  <!-- build:js scripts/app.js -->
-  <script src="scripts/app.js"></script>
-  <!-- endbuild-->
+<!-- build:js scripts/app.js -->
+<script src="scripts/app.js"></script>
+<!-- endbuild-->
 </body>
-
 </html>
