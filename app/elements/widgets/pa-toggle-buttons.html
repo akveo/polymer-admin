@@ -4,10 +4,6 @@
   <template>
     <style include="shared-styles"></style>
     <style>
-      .horizontal-section-container div {
-        width: 33.3%;
-      }
-
       .line {
         margin-bottom: 40px;
         min-width: 150px;
@@ -54,7 +50,8 @@
       }
     </style>
 
-    <div class="horizontal-section-container container-col-3">
+    <pa-simple-grid xs-cols="3">
+
       <div>
         <h4>Enabled</h4>
         <div class="horizontal-section">
@@ -87,7 +84,9 @@
           <div class="line"><paper-toggle-button checked class="blue"></paper-toggle-button><span>Calcium</span></div>
         </div>
       </div>
-    </div>
+
+    </pa-simple-grid>
+
   </template>
 
   <script>

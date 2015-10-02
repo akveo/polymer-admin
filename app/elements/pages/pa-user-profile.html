@@ -3,17 +3,105 @@
 <dom-module id="pa-user-profile">
   <template>
     <style include="shared-styles"></style>
+    <style>
+      .widget {
+        height: auto;
+      }
+
+      .line {
+        margin-bottom: 40px;
+        min-width: 150px;
+      }
+
+      .line span {
+        margin-left: 24px;
+      }
+
+      .notifications-block {
+        padding-top: 18px;
+      }
+
+      pa-profile-picture {
+        margin-top: -250px;
+      }
+
+    </style>
 
     <div class="widget-title">
       <h2>User Profile</h2>
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
     </div>
 
-    <div class="page-content">
-      <paper-material elevation="1">
-        <h3>Widget 1</h3>
-      </paper-material>
-    </div>
+    <pa-simple-grid>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>General Information</h3>
+
+          <pa-profile-picture src="../../images/pic-profile.png"></pa-profile-picture>
+
+          <pa-simple-grid md-cols="2">
+            <div>
+              <paper-input label="First Name" value="Anastasiya" auto-validate required></paper-input>
+              <paper-input label="Last Name" value="Tyshkavets" auto-validate required></paper-input>
+            </div>
+            <div>
+              <paper-input label="Department" value="Web Development"></paper-input>
+              <paper-input label="Job Title" value="Front End Web Developer"></paper-input>
+            </div>
+          </pa-simple-grid>
+
+        </paper-material>
+      </div>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Change Password</h3>
+          <pa-simple-grid md-cols="2">
+            <div>
+              <paper-input label="New Password" type="password"></paper-input>
+            </div>
+            <div>
+              <paper-input label="Confirm Password" type="password"></paper-input>
+            </div>
+          </pa-simple-grid>
+        </paper-material>
+      </div>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Contact Information</h3>
+          <pa-simple-grid md-cols="2">
+            <div>
+              <gold-email-input label="Email" value="email@gmail.com" auto-validate></gold-email-input>
+              <gold-phone-input label="Phone" auto-validate></gold-phone-input>
+            </div>
+            <div>
+              <paper-input label="Office Location"></paper-input>
+              <paper-input label="Room"></paper-input>
+            </div>
+          </pa-simple-grid>
+        </paper-material>
+      </div>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Send Email Notifications</h3>
+          <pa-simple-grid md-cols="2" class="notifications-block">
+            <div>
+              <div class="line"><paper-toggle-button checked></paper-toggle-button><span>When I receive a message</span></div>
+              <div class="line"><paper-toggle-button checked></paper-toggle-button><span>When Someone sends me an invitation</span></div>
+              <div class="line"><paper-toggle-button></paper-toggle-button><span>When profile information changes</span></div>
+            </div>
+            <div>
+              <div class="line"><paper-toggle-button></paper-toggle-button><span>When anyone logs into your account from a new device or browser</span></div>
+              <div class="line"><paper-toggle-button checked></paper-toggle-button><span>Weekly Reports</span></div>
+              <div class="line"><paper-toggle-button></paper-toggle-button><span>Daily Reports</span></div>
+            </div>
+          </pa-simple-grid>
+        </paper-material>
+      </div>
+
+    </pa-simple-grid>
   </template>
 
   <script>
@@ -21,8 +109,8 @@
       'use strict';
 
       Polymer({
-        is: 'pa-user-profile'
-      });
+        is: 'pa-user-profile',
+        });
     })();
   </script>
 

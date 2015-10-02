@@ -41,37 +41,30 @@
       }
     </style>
 
-    <div class="horizontal-section-container">
+    <pa-simple-grid xs-cols="3">
       <div>
-        <div class="horizontal-section">
-          <paper-fab icon="arrow-forward" title="arrow-forward" tabindex="0"></paper-fab>
-          <paper-fab icon="create" title="create" tabindex="0"></paper-fab>
-          <paper-fab icon="favorite" title="heart" tabindex="0"></paper-fab>
-          <paper-fab mini icon="done" title="done" tabindex="0"></paper-fab>
-          <paper-fab mini icon="reply" title="reply" tabindex="0"></paper-fab>
-        </div>
+        <paper-fab icon="arrow-forward" title="arrow-forward" tabindex="0"></paper-fab>
+        <paper-fab icon="create" title="create" tabindex="0"></paper-fab>
+        <paper-fab icon="favorite" title="heart" tabindex="0"></paper-fab>
+        <paper-fab mini icon="done" title="done" tabindex="0"></paper-fab>
+        <paper-fab mini icon="reply" title="reply" tabindex="0"></paper-fab>
       </div>
+      <div>
+        <paper-fab disabled icon="arrow-forward" title="arrow-forward" tabindex="0"></paper-fab>
+        <paper-fab disabled icon="create" title="create" tabindex="0"></paper-fab>
+        <paper-fab disabled icon="favorite" title="heart" tabindex="0"></paper-fab>
+        <paper-fab disabled mini icon="done" title="done" tabindex="0"></paper-fab>
+        <paper-fab disabled mini icon="reply" title="reply" tabindex="0"></paper-fab>
+      </div>
+      <div>
+        <paper-fab icon="arrow-forward" title="arrow-forward" tabindex="0" class="blue"></paper-fab>
+        <paper-fab icon="create" title="create" tabindex="0" class="red"></paper-fab>
+        <paper-fab icon="favorite" title="heart" tabindex="0" class="orange"></paper-fab>
+        <paper-fab mini icon="done" title="done" tabindex="0" class="green"></paper-fab>
+        <paper-fab mini icon="reply" title="reply" tabindex="0" class="blue"></paper-fab>
+      </div>
+    </pa-simple-grid>
 
-      <div>
-        <div class="horizontal-section">
-          <paper-fab disabled icon="arrow-forward" title="arrow-forward" tabindex="0"></paper-fab>
-          <paper-fab disabled icon="create" title="create" tabindex="0"></paper-fab>
-          <paper-fab disabled icon="favorite" title="heart" tabindex="0"></paper-fab>
-          <paper-fab disabled mini icon="done" title="done" tabindex="0"></paper-fab>
-          <paper-fab disabled mini icon="reply" title="reply" tabindex="0"></paper-fab>
-        </div>
-      </div>
-
-      <div>
-        <div class="horizontal-section">
-          <paper-fab icon="arrow-forward" title="arrow-forward" tabindex="0" class="blue"></paper-fab>
-          <paper-fab icon="create" title="create" tabindex="0" class="red"></paper-fab>
-          <paper-fab icon="favorite" title="heart" tabindex="0" class="orange"></paper-fab>
-          <paper-fab mini icon="done" title="done" tabindex="0" class="green"></paper-fab>
-          <paper-fab mini icon="reply" title="reply" tabindex="0" class="blue"></paper-fab>
-        </div>
-      </div>
-    </div>
   </template>
 
   <script>

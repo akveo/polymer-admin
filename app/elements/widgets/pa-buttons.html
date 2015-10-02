@@ -4,14 +4,6 @@
   <template>
     <style include="shared-styles"></style>
     <style>
-      .horizontal-section-container div {
-        width: 25%;
-      }
-
-      .horizontal-section-container .horizontal-section {
-        min-width: 130px;
-      }
-
       paper-button {
         display: block;
         margin-bottom: 24px;
@@ -80,51 +72,45 @@
       }
     </style>
 
-    <div class="horizontal-section-container container-col-4">
+    <pa-simple-grid xs-cols="2" sm-cols="4">
       <div>
-        <div class="horizontal-section">
-          <paper-button tabindex="0">button</paper-button>
-          <paper-button tabindex="0" class="colorful">colorful</paper-button>
-          <paper-button tabindex="0" disabled>disabled</paper-button>
-          <paper-button tabindex="0" noink>noink</paper-button>
-          <paper-button tabindex="0" class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
-          <paper-button tabindex="0" class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
-        </div>
+        <paper-button tabindex="0">button</paper-button>
+        <paper-button tabindex="0" class="colorful">colorful</paper-button>
+        <paper-button tabindex="0" disabled>disabled</paper-button>
+        <paper-button tabindex="0" noink>noink</paper-button>
+        <paper-button tabindex="0" class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+        <paper-button tabindex="0" class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
       </div>
 
       <div>
-        <div class="horizontal-section">
-          <paper-button tabindex="0" raised>button</paper-button>
-          <paper-button tabindex="0" raised class="colorful">colorful</paper-button>
-          <paper-button tabindex="0" raised disabled>disabled</paper-button>
-          <paper-button tabindex="0" raised noink>noink</paper-button>
-          <paper-button tabindex="0" raised class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
-          <paper-button tabindex="0" raised class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
-        </div>
+        <paper-button tabindex="0" raised>button</paper-button>
+        <paper-button tabindex="0" raised class="colorful">colorful</paper-button>
+        <paper-button tabindex="0" raised disabled>disabled</paper-button>
+        <paper-button tabindex="0" raised noink>noink</paper-button>
+        <paper-button tabindex="0" raised class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+        <paper-button tabindex="0" raised class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
       </div>
 
       <div>
-        <div class="horizontal-section">
-          <paper-button tabindex="0" toggles>button</paper-button>
-          <paper-button tabindex="0" toggles raised noink>noink</paper-button>
-          <paper-button tabindex="0" toggles active class="colorful">colorful</paper-button>
-          <paper-button tabindex="0" toggles raised active class="colorful">colorful</paper-button>
-          <paper-button tabindex="0" toggles class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
-          <paper-button tabindex="0" toggles class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
-        </div>
+        <paper-button tabindex="0" toggles>button</paper-button>
+        <paper-button tabindex="0" toggles raised noink>noink</paper-button>
+        <paper-button tabindex="0" toggles active class="colorful">colorful</paper-button>
+        <paper-button tabindex="0" toggles raised active class="colorful">colorful</paper-button>
+        <paper-button tabindex="0" toggles class="colorful custom"><iron-icon icon="check"></iron-icon>ok</paper-button>
+        <paper-button tabindex="0" toggles class="custom"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
       </div>
 
       <div>
-        <div class="horizontal-section">
-          <paper-button tabindex="0" class="blue ripple">button</paper-button>
-          <paper-button tabindex="0" class="red ripple">noink</paper-button>
-          <paper-button tabindex="0" class="orange ripple">colorful</paper-button>
-          <paper-button tabindex="0" class="green ripple">colorful</paper-button>
-          <paper-button tabindex="0" class="red ripple"><iron-icon icon="check"></iron-icon>ok</paper-button>
-          <paper-button tabindex="0" class="blue ripple"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
-        </div>
+        <paper-button tabindex="0" class="blue ripple">button</paper-button>
+        <paper-button tabindex="0" class="red ripple">noink</paper-button>
+        <paper-button tabindex="0" class="orange ripple">colorful</paper-button>
+        <paper-button tabindex="0" class="green ripple">colorful</paper-button>
+        <paper-button tabindex="0" class="red ripple"><iron-icon icon="check"></iron-icon>ok</paper-button>
+        <paper-button tabindex="0" class="blue ripple"><iron-icon icon="clear"></iron-icon>cancel</paper-button>
       </div>
-    </div>
+
+    </pa-simple-grid>
+
   </template>
 
   <script>

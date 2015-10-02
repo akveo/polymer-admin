@@ -1,0 +1,71 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-simple-grid">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        margin-left: -15px;
+        margin-right: -15px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      :host /deep/ > * {
+        box-sizing: border-box;
+        display: block;
+        padding: 0 15px;
+        width: 100%;
+      }
+
+      :host[xs-cols='1'] /deep/ > * { width: 100%; }
+      :host[xs-cols='2'] /deep/ > * { width: 50%; }
+      :host[xs-cols='3'] /deep/ > * { width: 33.33333333%; }
+      :host[xs-cols='4'] /deep/ > * { width: 25%; }
+      :host[xs-cols='5'] /deep/ > * { width: 20%; }
+      :host[xs-cols='6'] /deep/ > * { width: 16.66666667%; }
+
+      @media (min-width: 768px) {
+        :host[sm-cols='1'] /deep/ > * { width: 100%; }
+        :host[sm-cols='2'] /deep/ > * { width: 50%; }
+        :host[sm-cols='3'] /deep/ > * { width: 33.33333333%; }
+        :host[sm-cols='4'] /deep/ > * { width: 25%; }
+        :host[sm-cols='5'] /deep/ > * { width: 20%; }
+        :host[sm-cols='6'] /deep/ > * { width: 16.66666667%; }
+      }
+
+      @media (min-width: 992px) {
+        :host[md-cols='1'] /deep/ > * { width: 100%; }
+        :host[md-cols='2'] /deep/ > * { width: 50%; }
+        :host[md-cols='3'] /deep/ > * { width: 33.33333333%; }
+        :host[md-cols='4'] /deep/ > * { width: 25%; }
+        :host[md-cols='5'] /deep/ > * { width: 20%; }
+        :host[md-cols='6'] /deep/ > * { width: 16.66666667%; }
+      }
+
+      @media (min-width: 1200px) {
+        :host[lg-cols='1'] /deep/ > * { width: 100%; }
+        :host[lg-cols='2'] /deep/ > * { width: 50%; }
+        :host[lg-cols='3'] /deep/ > * { width: 33.33333333%; }
+        :host[lg-cols='4'] /deep/ > * { width: 25%; }
+        :host[lg-cols='5'] /deep/ > * { width: 20%; }
+        :host[lg-cols='6'] /deep/ > * { width: 16.66666667%; }
+      }
+    </style>
+
+    <content></content>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-simple-grid'
+      });
+    })();
+  </script>
+
+</dom-module>

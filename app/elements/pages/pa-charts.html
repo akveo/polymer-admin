@@ -9,53 +9,62 @@
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
     </div>
 
-    <div class="page-content page-content-2">
-      <paper-material elevation="1">
-        <h3>Pie Chart</h3>
+    <pa-simple-grid sm-cols="1" md-cols="2">
 
-        <google-chart
-            type="pie"
-            id="selection-chart"
-            options='{"title": "Distribution of days in 2001H1"}'
-            cols='[ {"label": "Month", "type": "string"},{"label": "Days", "type": "number"} ]'
-            rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
-        </google-chart>
-      </paper-material>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Pie Chart</h3>
+          <google-chart
+              type="pie"
+              id="selection-chart"
+              options='{"title": "Distribution of days in 2001H1"}'
+              cols='[ {"label": "Month", "type": "string"},{"label": "Days", "type": "number"} ]'
+              rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
+          </google-chart>
+        </paper-material>
+      </div>
 
-      <paper-material elevation="1">
-        <h3>Area Chart</h3>
-        <google-chart
-            type='area'
-            options='{"title": "Days in a month"}'
-            cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
-            rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
-        </google-chart>
-      </paper-material>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Area Chart</h3>
+          <google-chart
+              type='area'
+              options='{"title": "Days in a month"}'
+              cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
+              rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
+          </google-chart>
+        </paper-material>
+      </div>
 
-      <paper-material elevation="1">
-        <h3>Bar chart</h3>
-        <google-chart
-            type='bar'
-            options='{"title": "Days in a month"}'
-            cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
-            rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
-        </google-chart>
-      </paper-material>
+      <div>
+        <paper-material class="widget"  elevation="1">
+          <h3>Bar chart</h3>
+          <google-chart
+              type='bar'
+              options='{"title": "Days in a month"}'
+              cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
+              rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
+          </google-chart>
+        </paper-material>
+      </div>
 
-      <paper-material elevation="1">
-        <h3>Geo Chart</h3>
-        <google-chart
-            type='geo'
-            data='[ ["Country", "Popularity"],
+      <div>
+        <paper-material class="widget"  elevation="1">
+          <h3>Geo Chart</h3>
+          <google-chart
+              type='geo'
+              data='[ ["Country", "Popularity"],
                    ["Germany", 200],
                    ["United States", 300],
                    ["Brazil", 400],
                    ["Canada", 500],
                    ["France", 600],
                    ["RU", 700] ]'>
-        </google-chart>
-      </paper-material>
-    </div>
+          </google-chart>
+        </paper-material>
+      </div>
+
+    </pa-simple-grid>
   </template>
 
   <script>

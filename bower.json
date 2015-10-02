@@ -15,7 +15,9 @@
     "google-youtube": "GoogleWebComponents/google-youtube#~1.1.2",
     "google-feeds": "GoogleWebComponents/google-feeds#~1.0.1",
     "google-chart": "GoogleWebComponents/google-chart#~1.0.3",
-    "leaflet": "~0.7.5"
+    "leaflet": "~0.7.5",
+    "gold-phone-input": "PolymerElements/gold-phone-input#~1.0.6",
+    "gold-email-input": "PolymerElements/gold-email-input#~1.0.5"
   },
   "devDependencies": {
     "web-component-tester": "*",

@@ -4,8 +4,9 @@
   <template>
     <style include="shared-styles"></style>
     <style>
-      .page-content paper-material {
-        height: 460px;
+      .widget {
+        height: auto;
+        min-height: 460px;
       }
     </style>
 
@@ -14,27 +15,38 @@
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
     </div>
 
-    <div class="page-content page-content-2">
-      <paper-material elevation="1">
-        <h3>Buttons</h3>
-        <pa-buttons></pa-buttons>
-      </paper-material>
+    <pa-simple-grid sm-cols="1" md-cols="2">
 
-      <paper-material elevation="1">
-        <h3>Paper Fab</h3>
-        <pa-paper-fab></pa-paper-fab>
-      </paper-material>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Buttons</h3>
+          <pa-buttons></pa-buttons>
+        </paper-material>
+      </div>
 
-      <paper-material elevation="1">
-        <h3>Sliders</h3>
-        <pa-sliders></pa-sliders>
-      </paper-material>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Paper Fab</h3>
+          <pa-paper-fab></pa-paper-fab>
+        </paper-material>
+      </div>
 
-      <paper-material elevation="1">
-        <h3>Toggle Button</h3>
-        <pa-toggle-buttons></pa-toggle-buttons>
-      </paper-material>
-    </div>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Sliders</h3>
+          <pa-sliders></pa-sliders>
+        </paper-material>
+      </div>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Toggle Button</h3>
+          <pa-toggle-buttons></pa-toggle-buttons>
+        </paper-material>
+      </div>
+
+    </pa-simple-grid>
+
   </template>
 
   <script>

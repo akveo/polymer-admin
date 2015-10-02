@@ -4,10 +4,6 @@
   <template>
     <style include="shared-styles"></style>
     <style>
-      .horizontal-section-container div {
-        width: 33%;
-      }
-
       paper-radio-button.blue {
         --paper-radio-button-checked-color: var(--paper-light-blue-500);
         --paper-radio-button-checked-ink-color: var(--paper-light-blue-500);
@@ -41,7 +37,7 @@
       }
     </style>
 
-    <div class="horizontal-section-container">
+    <pa-simple-grid xs-cols="3">
       <div>
         <h4>Enabled</h4>
         <div class="horizontal-section">
@@ -80,7 +76,8 @@
           </paper-radio-group>
         </div>
       </div>
-    </div>
+    </pa-simple-grid>
+
   </template>
 
   <script>

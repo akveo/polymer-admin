@@ -38,52 +38,56 @@
       <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
     </div>
 
-    <div class="page-content page-content-2" id="host">
+    <pa-simple-grid sm-cols="1" md-cols="2">
 
-      <paper-material elevation="1">
-        <h3>Combo Chart</h3>
-        <google-chart
-            type='combo'
-            options='{"seriesType": "bars", "series": {"2": {"type": "line"}}}'
-            data='[ ["Day", "A", "B", "C"],
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Combo Chart</h3>
+          <google-chart
+              type='combo'
+              options='{"seriesType": "bars", "series": {"2": {"type": "line"}}}'
+              data='[ ["Day", "A", "B", "C"],
                        ["Mon", 20, 45, 28],
                        ["Tue", 31, 66, 38],
                        ["Wed", 50, 80, 55],
                        ["Thu", 77, 50, 77],
                        ["Fri", 68, 15, 66] ]'>
-        </google-chart>
+          </google-chart>
 
-      </paper-material>
+        </paper-material>
+      </div>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Awesome Video</h3>
+          <!--<google-youtube
+              video-id="jVn8tlnwAEs"
+              height="270px"
+              width="480px"
+              rel="0"
+              autoplay="0">
+          </google-youtube>-->
+        </paper-material>
+      </div>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Latest News</h3>
+          <!--<div class="google-feeds-wrapper">
+            <google-feeds id="feeder"></google-feeds>
 
-      <paper-material elevation="1">
-        <h3>Awesome Video</h3>
-        <google-youtube
-            video-id="jVn8tlnwAEs"
-            height="270px"
-            width="480px"
-            rel="0"
-            autoplay="0">
-        </google-youtube>
-      </paper-material>
-
-      <paper-material elevation="1">
-        <h3>Latest News</h3>
-        <div class="google-feeds-wrapper">
-          <google-feeds id="feeder"></google-feeds>
-
-          <script>
-            var feeder = document.getElementById("feeder");
-            feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
-          </script>
-        </div>
-      </paper-material>
-
-      <paper-material elevation="1">
-        <h3>Todo List</h3>
-        <todo-app></todo-app>
-      </paper-material>
-
-    </div>
+            <script>
+              var feeder = document.getElementById("feeder");
+              feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
+            </script>
+          </div>-->
+        </paper-material>
+      </div>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Todo List</h3>
+          <todo-app></todo-app>
+        </paper-material>
+      </div>
+    </pa-simple-grid>
   </template>
 
   <script>

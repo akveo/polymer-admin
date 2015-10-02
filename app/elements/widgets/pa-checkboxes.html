@@ -4,10 +4,6 @@
   <template>
     <style include="shared-styles"></style>
     <style>
-      .horizontal-section-container div {
-        width: 33%;
-      }
-
       paper-checkbox {
         display: block;
         margin-bottom: 40px;
@@ -42,7 +38,7 @@
       }
     </style>
 
-    <div class="horizontal-section-container">
+    <pa-simple-grid xs-cols="3">
       <div>
         <h4>Enabled</h4>
         <div class="horizontal-section">
@@ -70,7 +66,8 @@
           <paper-checkbox class="green" checked>Nitrogen</paper-checkbox>
         </div>
       </div>
-    </div>
+    </pa-simple-grid>
+
   </template>
 
   <script>
