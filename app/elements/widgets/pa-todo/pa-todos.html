@@ -1,0 +1,69 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="pa-todo-item.html">
+
+<dom-module id="pa-todos">
+  <template>
+    <style>
+      .todo-list {
+        height: 252px;
+        overflow-y: auto;
+        margin-left: -14px;
+      }
+    </style>
+
+    <section id="todoapp">
+      <header id="header">
+        <paper-input placeholder="Add a to-do" no-label-float id="todoInput"></paper-input>
+      </header>
+
+      <div class="todo-list" on-pa-destroy-item="destroyItemAction">
+        <template is="dom-repeat" items="{{items}}" observe="completed">
+          <pa-todo-item item="{{item}}"></pa-todo-item>
+        </template>
+      </div>
+
+    </section>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var ENTER_KEY = 13;
+
+      Polymer({
+        is: 'pa-todos',
+
+        properties: {
+          modelId: String,
+          items: {
+            type: Array
+          },
+          model: {
+            type: Object
+          }
+        },
+
+        listeners: {
+          'keypress': 'keypressAction'
+        },
+
+        keypressAction: function(e) {
+          if (e.keyCode === ENTER_KEY) {
+            var input = document.getElementById('todoInput').$.input;
+            this.model.newItem(input.value);
+            input.value = '';
+          }
+        },
+
+        attached: function() {
+          this.set('model', document.querySelector('#todo-model'));
+        },
+
+        destroyItemAction: function(e, detail) {
+          this.model.destroyItem(detail);
+        },
+      });
+    })();
+  </script>
+</dom-module>

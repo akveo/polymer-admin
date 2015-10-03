@@ -1,0 +1,58 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-widget-title">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        margin-right: -12px;
+        padding-bottom: 12px;
+        @apply(--layout);
+        @apply(--layout-horizontal);
+      }
+
+      h2 {
+        margin: 0;
+        display: inline-block;
+      }
+
+      paper-icon-button {
+        padding: 12px;
+        --iron-icon-height: 24px;
+        --iron-icon-width: 24px;
+      }
+
+      paper-icon-button::shadow iron-icon {
+        color: #7F7F7F;
+      }
+
+      paper-icon-button.selected::shadow iron-icon {
+        color: #97A1D7
+      }
+    </style>
+
+    <h2>{{ title }}</h2>
+    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+    <span class="flex"></span>
+    <paper-icon-button icon="view-module" class="selected"></paper-icon-button>
+    <paper-icon-button icon="view-stream"></paper-icon-button>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-widget-title',
+
+        properties: {
+          title: {
+            type: String,
+            value: 'Page Title'
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

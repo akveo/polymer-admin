@@ -1,10 +1,15 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/google-chart/google-chart.html">
+<link rel="import" href="../../../bower_components/google-youtube/google-youtube.html">
+<link rel="import" href="../../../bower_components/google-feeds/google-feeds.html">
+<link rel="import" href="../widgets/pa-todo/pa-todo.html">
 
 <dom-module id="pa-dashboard">
   <template>
     <style include="shared-styles"></style>
 
     <style>
+
       :host::shadow .google-feeds-wrapper {
         height: 280px;
         overflow-y: scroll;
@@ -33,10 +38,7 @@
       }
     </style>
 
-    <div class="widget-title">
-      <h2>Dashboard</h2>
-      <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-    </div>
+    <pa-widget-title title="Dashboard"></pa-widget-title>
 
     <pa-simple-grid sm-cols="1" md-cols="2">
 
@@ -59,32 +61,27 @@
       <div>
         <paper-material class="widget" elevation="1">
           <h3>Awesome Video</h3>
-          <!--<google-youtube
+          <google-youtube
               video-id="jVn8tlnwAEs"
               height="270px"
               width="480px"
               rel="0"
               autoplay="0">
-          </google-youtube>-->
+          </google-youtube>
         </paper-material>
       </div>
       <div>
         <paper-material class="widget" elevation="1">
           <h3>Latest News</h3>
-          <!--<div class="google-feeds-wrapper">
+          <div class="google-feeds-wrapper">
             <google-feeds id="feeder"></google-feeds>
-
-            <script>
-              var feeder = document.getElementById("feeder");
-              feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
-            </script>
-          </div>-->
+          </div>
         </paper-material>
       </div>
       <div>
         <paper-material class="widget" elevation="1">
           <h3>Todo List</h3>
-          <todo-app></todo-app>
+          <pa-todo></pa-todo>
         </paper-material>
       </div>
     </pa-simple-grid>
@@ -95,7 +92,10 @@
       'use strict';
 
       Polymer({
-        is: 'pa-dashboard'
+        is: 'pa-dashboard',
+        ready: function() {
+          this.$.feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
+        }
       });
     })();
   </script>

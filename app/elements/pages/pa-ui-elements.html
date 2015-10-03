@@ -1,4 +1,8 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../widgets/pa-buttons.html">
+<link rel="import" href="../widgets/pa-paper-fab.html">
+<link rel="import" href="../widgets/pa-sliders.html">
+<link rel="import" href="../widgets/pa-toggle-buttons.html">
 
 <dom-module id="pa-ui-elements">
   <template>
@@ -10,10 +14,7 @@
       }
     </style>
 
-    <div class="widget-title">
-      <h2>UI Elements</h2>
-      <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-    </div>
+    <pa-widget-title title="UI Elements"></pa-widget-title>
 
     <pa-simple-grid sm-cols="1" md-cols="2">
 

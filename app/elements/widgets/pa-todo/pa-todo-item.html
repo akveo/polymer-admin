@@ -1,0 +1,61 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-todo-item">
+  <template>
+
+    <style>
+      :host {
+        display: block;
+        @apply(--layout);
+        @apply(--layout-horizontal);
+      }
+      paper-checkbox {
+        padding: 13px 15px;
+        cursor: pointer;
+        font-size: 14px;
+        --paper-checkbox-label-color: #444;
+        --paper-checkbox-unchecked-color: #7F7F7F;
+      }
+
+      paper-icon-button {
+        padding: 10px;
+        margin-top: 2px;
+      }
+
+      paper-icon-button::shadow iron-icon {
+        color: #7F7F7F;
+      }
+
+      paper-icon-button:hover::shadow iron-icon {
+        color: #3F51B5;
+      }
+
+    </style>
+
+    <paper-checkbox checked="{{item.completed::change}}" class="flex">[[item.title]]</paper-checkbox>
+    <paper-icon-button icon="clear" on-click="destroyAction"></paper-icon-button>
+
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-todo-item',
+
+        properties: {
+          item: {
+            type: Object,
+            value: function() {
+              return {};
+            }
+          }
+        },
+
+        destroyAction: function() {
+          this.fire('pa-destroy-item', this.item);
+        }
+      });
+    })();
+  </script>
+</dom-module>

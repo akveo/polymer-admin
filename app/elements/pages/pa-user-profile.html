@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../components/pa-profile-picture.html">
 
 <dom-module id="pa-user-profile">
   <template>
@@ -22,15 +23,13 @@
       }
 
       pa-profile-picture {
-        margin-top: -250px;
+        display: block;
+        margin-bottom: 12px;
       }
 
     </style>
 
-    <div class="widget-title">
-      <h2>User Profile</h2>
-      <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-    </div>
+    <pa-widget-title title="User Profile"></pa-widget-title>
 
     <pa-simple-grid>
       <div>

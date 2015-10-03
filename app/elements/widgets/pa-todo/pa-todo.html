@@ -1,0 +1,26 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../../../bower_components/iron-localstorage/iron-localstorage.html">
+<link rel="import" href="pa-todo-model.html">
+<link rel="import" href="pa-todos.html">
+
+<dom-module id="pa-todo">
+  <template>
+    <style include="shared-styles"></style>
+    <style></style>
+
+    <pa-todo-model id="todo-model" items="{{todos}}"></pa-todo-model>
+    <pa-todos items="{{todos}}"></pa-todos>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-todo'
+      });
+    })();
+  </script>
+
+</dom-module>
