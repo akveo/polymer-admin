@@ -5,8 +5,6 @@
   <template>
     <style include="shared-styles"></style>
 
-    <pa-widget-title title="Tables"></pa-widget-title>
-
     <pa-simple-grid>
       <div>
         <paper-material class="widget" elevation="1">
@@ -26,7 +24,14 @@
       'use strict';
 
       Polymer({
-        is: 'pa-tables'
+        is: 'pa-tables',
+
+        properties: {
+          cols: {
+            type: String,
+            value: '2'
+          }
+        }
       });
     })();
   </script>

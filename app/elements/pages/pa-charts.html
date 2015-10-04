@@ -5,9 +5,7 @@
   <template>
     <style include="shared-styles"></style>
 
-    <pa-widget-title title="Charts"></pa-widget-title>
-
-    <pa-simple-grid sm-cols="1" md-cols="2">
+    <pa-simple-grid sm-cols="1" md-cols$='{{cols}}'>
 
       <div>
         <paper-material class="widget" elevation="1">
@@ -70,7 +68,14 @@
       'use strict';
 
       Polymer({
-        is: 'pa-charts'
+        is: 'pa-charts',
+
+        properties: {
+          cols: {
+            type: String,
+            value: '2'
+          }
+        }
       });
     })();
   </script>

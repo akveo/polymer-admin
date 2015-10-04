@@ -118,31 +118,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-pages attr-for-selected="data-route" selected="{{route}}">
 
           <section data-route="dashboard">
-            <pa-dashboard></pa-dashboard>
+            <pa-widget-title title="Dashboard" cols='{{cols}}'></pa-widget-title>
+            <pa-dashboard cols='{{cols}}'></pa-dashboard>
           </section>
 
           <section data-route="charts">
-            <pa-charts></pa-charts>
+            <pa-widget-title title="Charts" cols='{{cols}}'></pa-widget-title>
+            <pa-charts cols='{{cols}}'></pa-charts>
           </section>
 
           <section data-route="tables">
-            <pa-tables></pa-tables>
+            <pa-widget-title title="Tables" cols='{{cols}}'></pa-widget-title>
+            <pa-tables cols='{{cols}}'></pa-tables>
           </section>
 
           <section data-route="form-elements">
-            <pa-form-elements></pa-form-elements>
+            <pa-widget-title title="Form Elements" cols='{{cols}}'></pa-widget-title>
+            <pa-form-elements cols='{{cols}}'></pa-form-elements>
           </section>
 
           <section data-route="ui-elements">
-            <pa-ui-elements></pa-ui-elements>
+            <pa-widget-title title="UI Elements" cols='{{cols}}'></pa-widget-title>
+            <pa-ui-elements cols='{{cols}}'></pa-ui-elements>
           </section>
 
           <section data-route="maps">
-            <pa-maps></pa-maps>
+            <pa-widget-title title="Maps" cols='{{cols}}'></pa-widget-title>
+            <pa-maps cols='{{cols}}'></pa-maps>
           </section>
 
           <section data-route="user-profile">
-            <pa-user-profile></pa-user-profile>
+            <pa-widget-title title="User Profile" cols='{{cols}}'></pa-widget-title>
+            <pa-user-profile cols='{{cols}}'></pa-user-profile>
           </section>
 
         </iron-pages>

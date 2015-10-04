@@ -9,7 +9,6 @@
     <style include="shared-styles"></style>
 
     <style>
-
       :host::shadow .google-feeds-wrapper {
         height: 280px;
         overflow-y: scroll;
@@ -36,11 +35,10 @@
       :host::shadow .gfc-result {
         margin-bottom: 18px;
       }
+
     </style>
 
-    <pa-widget-title title="Dashboard"></pa-widget-title>
-
-    <pa-simple-grid sm-cols="1" md-cols="2">
+    <pa-simple-grid sm-cols="1" md-cols$='{{cols}}'>
 
       <div>
         <paper-material class="widget" elevation="1">
@@ -93,6 +91,14 @@
 
       Polymer({
         is: 'pa-dashboard',
+
+        properties: {
+          cols: {
+            type: String,
+            value: '2'
+          }
+        },
+
         ready: function() {
           this.$.feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
         }

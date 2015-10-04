@@ -26,15 +26,15 @@
         color: #7F7F7F;
       }
 
-      paper-icon-button.selected::shadow iron-icon {
+      paper-icon-button[selected]::shadow iron-icon {
         color: #97A1D7
       }
     </style>
 
     <h2>{{ title }}</h2>
     <span class="flex"></span>
-    <paper-icon-button icon="view-module" class="selected"></paper-icon-button>
-    <paper-icon-button icon="view-stream"></paper-icon-button>
+    <paper-icon-button icon="view-module" selected$="{{colsview}}" on-click="setColsView"></paper-icon-button>
+    <paper-icon-button icon="view-stream" selected$="{{!colsview}}" on-click="setStreamView"></paper-icon-button>
   </template>
 
   <script>
@@ -48,7 +48,32 @@
           title: {
             type: String,
             value: 'Page Title'
+          },
+
+          cols: {
+            type: String,
+            value: '2',
+            notify: true
+          },
+
+          colsview: {
+            type: Boolean,
+            value: true,
+            computed:"_computeView(cols)",
+            notify: true
           }
+        },
+
+        _computeView: function(cols) {
+          return cols === '2';
+        },
+
+        setColsView: function() {
+          this.cols = '2';
+        },
+
+        setStreamView: function() {
+          this.cols = '1';
         }
       });
     })();

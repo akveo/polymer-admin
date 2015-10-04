@@ -12,9 +12,7 @@
       }
     </style>
 
-    <pa-widget-title title="Maps"></pa-widget-title>
-
-    <pa-simple-grid>
+    <pa-simple-grid sm-cols="1" md-cols$='{{cols}}'>
 
       <div>
         <paper-material class="widget" elevation="1">
@@ -43,7 +41,14 @@
       'use strict';
 
       Polymer({
-        is: 'pa-maps'
+        is: 'pa-maps',
+
+        properties: {
+          cols: {
+            type: String,
+            value: '2'
+          }
+        }
       });
     })();
   </script>
