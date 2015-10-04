@@ -2,6 +2,19 @@
 <dom-module id="shared-styles">
   <template>
     <style>
+      ::shadow ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+      }
+
+      ::shadow ::-webkit-scrollbar-thumb {
+        background: #A9A9AA;
+      }
+
+      ::shadow ::-webkit-scrollbar-track {
+        background: #FAFAFA;
+      }
+
       .widget {
         display: block;
         border-radius: 2px;
