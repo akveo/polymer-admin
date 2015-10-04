@@ -64,4 +64,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   app.cols = "2";
 
+  app.toggleSubmenu = function(e) {
+    e.target.parentNode.classList.toggle('submenu-expanded');
+  };
+
 })(document);

@@ -90,10 +90,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Form Elements</span>
           </a>
 
-          <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
-            <iron-icon icon="hardware:laptop"></iron-icon>
-            <span>UI Elements</span>
-          </a>
+          <paper-submenu id="ui-elements-menu">
+            <paper-item class="menu-trigger" on-click="toggleSubmenu">
+              <iron-icon icon="hardware:laptop"></iron-icon>
+              <span class="flex">UI Elements</span>
+              <iron-icon icon="hardware:keyboard-arrow-down" class="arow-down"></iron-icon>
+            </paper-item>
+            <paper-menu class="menu-content sublist">
+              <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
+                <iron-icon icon="arrow-forward"></iron-icon>
+                <span>Buttons</span>
+              </a>
+              <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
+                <iron-icon icon="text-format"></iron-icon>
+                <span>Typography</span>
+              </a>
+              <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
+                <iron-icon icon="favorite-border"></iron-icon>
+                <span>Icons</span>
+              </a>
+            </paper-menu>
+          </paper-submenu>
 
           <a data-route="maps" href="/maps" on-click="onDataRouteClick">
             <iron-icon icon="maps:pin-drop"></iron-icon>
@@ -111,6 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </a>
 
         </paper-menu>
+
       </paper-scroll-header-panel>
 
       <paper-scroll-header-panel main>

@@ -93,6 +93,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   #drawer a {
     width: 255px;
     white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  #drawer paper-submenu paper-item {
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    width: 255px;
+    box-sizing: border-box;
+    @apply(--layout);
+    @apply(--layout-horizontal);
+  }
+
+  #drawer paper-submenu .arow-down {
+    margin-right: 0;
+  }
+
+  #drawer paper-submenu paper-menu {
+    background: #efefef;
+    padding: 0;
+    height: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  #drawer paper-submenu .submenu-expanded + paper-menu {
+    height: auto;
+    max-height: 300px;
   }
 
   .refresh-icon {
