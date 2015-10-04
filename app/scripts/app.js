@@ -46,7 +46,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         charts[i].drawChart();
       }
     }, 0);
+  };
 
+  app.toggleDrawer = function() {
+    var drawerPanel = document.getElementById('paperDrawerPanel');
+    if (drawerPanel.narrow) {
+      drawerPanel.togglePanel();
+    } else {
+      drawerPanel.classList.toggle('collapsed-menu');
+    }
   };
 
   // Scroll page to top and expand header

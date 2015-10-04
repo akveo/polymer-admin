@@ -86,6 +86,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     padding: 0 16px;
   }
 
+  .toggle-drawer {
+    margin-left: 16px;
+  }
+
+  #drawer a {
+    width: 255px;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 640px) {
+    .collapsed-menu::shadow #main {
+      left: 62px !important;
+    }
+
+    .collapsed-menu::shadow #drawer {
+      width: 62px !important;
+      -webkit-transform: translateX(0);
+      transform: translateX(0);
+    }
+  }
+
   iron-pages {
     padding: 24px 16px;
   }
