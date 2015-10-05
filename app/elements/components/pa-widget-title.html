@@ -14,6 +14,7 @@
       h2 {
         margin: 0;
         display: inline-block;
+        font-size: 36px;
       }
 
       paper-icon-button {
@@ -70,10 +71,19 @@
 
         setColsView: function() {
           this.cols = '2';
+          this.resizeCharts();
         },
 
         setStreamView: function() {
           this.cols = '1';
+          this.resizeCharts();
+        },
+
+        resizeCharts: function() {
+          var charts = document.getElementsByTagName("google-chart");
+          for (var i = 0; i < charts.length; i++) {
+            charts[i].drawChart();
+          }
         }
       });
     })();

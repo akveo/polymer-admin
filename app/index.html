@@ -97,17 +97,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <iron-icon icon="hardware:keyboard-arrow-down" class="arow-down"></iron-icon>
             </paper-item>
             <paper-menu class="menu-content sublist">
-              <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
-                <iron-icon icon="arrow-forward"></iron-icon>
-                <span>Buttons</span>
-              </a>
-              <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
+              <a data-route="typo" href="/typo" on-click="onDataRouteClick">
                 <iron-icon icon="text-format"></iron-icon>
                 <span>Typography</span>
               </a>
-              <a data-route="ui-elements" href="/ui-elements" on-click="onDataRouteClick">
+              <a data-route="buttons" href="/buttons" on-click="onDataRouteClick">
+                <iron-icon icon="arrow-forward"></iron-icon>
+                <span>Buttons</span>
+              </a>
+              <a data-route="ui-other" href="/ui-other" on-click="onDataRouteClick">
                 <iron-icon icon="favorite-border"></iron-icon>
-                <span>Icons</span>
+                <span>Other UI Elements</span>
               </a>
             </paper-menu>
           </paper-submenu>
@@ -155,9 +155,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <pa-form-elements cols='{{cols}}'></pa-form-elements>
           </section>
 
-          <section data-route="ui-elements">
-            <pa-widget-title title="UI Elements" cols='{{cols}}'></pa-widget-title>
-            <pa-ui-elements cols='{{cols}}'></pa-ui-elements>
+          <section data-route="typo">
+            <pa-widget-title title="Typography" cols='{{cols}}'></pa-widget-title>
+            <pa-typo cols='{{cols}}'></pa-typo>
+          </section>
+
+          <section data-route="buttons">
+            <pa-widget-title title="Buttons" cols='{{cols}}'></pa-widget-title>
+            <pa-page-buttons cols='{{cols}}'></pa-page-buttons>
+          </section>
+
+          <section data-route="ui-other">
+            <pa-widget-title title="Other UI Elements" cols='{{cols}}'></pa-widget-title>
+            <pa-ui-other cols='{{cols}}'></pa-ui-other>
           </section>
 
           <section data-route="maps">

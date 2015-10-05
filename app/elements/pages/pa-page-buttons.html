@@ -1,10 +1,10 @@
 <link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../widgets/pa-buttons.html">
 <link rel="import" href="../widgets/pa-paper-fab.html">
-<link rel="import" href="../widgets/pa-sliders.html">
 <link rel="import" href="../widgets/pa-toggle-buttons.html">
+<link rel="import" href="../widgets/pa-icon-buttons.html">
 
-<dom-module id="pa-ui-elements">
+<dom-module id="pa-page-buttons">
   <template>
     <style include="shared-styles"></style>
     <style>
@@ -32,8 +32,8 @@
 
       <div>
         <paper-material class="widget" elevation="1">
-          <h3>Sliders</h3>
-          <pa-sliders></pa-sliders>
+          <h3>Icon Buttons</h3>
+          <pa-icon-buttons></pa-icon-buttons>
         </paper-material>
       </div>
 
@@ -53,7 +53,7 @@
       'use strict';
 
       Polymer({
-        is: 'pa-ui-elements',
+        is: 'pa-page-buttons',
 
         properties: {
           cols: {

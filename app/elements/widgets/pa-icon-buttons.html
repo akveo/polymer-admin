@@ -1,0 +1,122 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+
+<dom-module id="pa-icon-buttons">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      paper-icon-button {
+        margin-left: 30px;
+        display: block;
+        width: 24px;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      paper-icon-button.blue {
+        color: var(--paper-light-blue-500);
+      }
+
+      paper-icon-button.red {
+        color: var(--paper-red-500);
+      }
+
+      paper-icon-button.orange {
+        color: var(--paper-orange-500);
+      }
+
+      paper-icon-button.green {
+        color: var(--paper-green-500);
+      }
+
+      paper-icon-button.blue:hover {
+        background: var(--paper-light-blue-50);
+        border-radius: 50%;
+      }
+
+      paper-icon-button.red:hover {
+        background: var(--paper-red-50);
+        border-radius: 50%;
+      }
+
+      paper-icon-button.orange:hover {
+        background: var(--paper-orange-50);
+        border-radius: 50%;
+      }
+
+      paper-icon-button.green:hover {
+        background: var(--paper-green-50);
+        border-radius: 50%;
+      }
+
+      paper-icon-button.huge {
+        margin-left: 0px;
+        width: 100px;
+        --paper-icon-button-ink-color: var(--paper-indigo-500);
+      }
+
+      paper-icon-button.huge::shadow #icon {
+        width: 100px;
+        height: 100px;
+      }
+
+      paper-icon-button.huge #icon {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+
+    <pa-simple-grid xs-cols="3">
+      <div>
+        <h4>Enabled</h4>
+        <div class="horizontal-section">
+          <paper-icon-button icon="menu" alt="menu" title="menu"></paper-icon-button>
+          <paper-icon-button icon="favorite" alt="heart" title="heart"></paper-icon-button>
+          <paper-icon-button icon="arrow-back" alt="arrow-back" title="arrow-back"></paper-icon-button>
+          <paper-icon-button icon="arrow-forward" alt="arrow-forward" title="arrow-forward"></paper-icon-button>
+          <paper-icon-button icon="clear" alt="clear" title="clear"></paper-icon-button>
+          <paper-icon-button icon="polymer" alt="polymer" title="polymer"></paper-icon-button>
+          <paper-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" title="octocat"></paper-icon-button>
+        </div>
+      </div>
+
+      <div>
+        <h4>Disabled</h4>
+        <div class="horizontal-section">
+          <paper-icon-button icon="menu" alt="menu" disabled></paper-icon-button>
+          <paper-icon-button icon="favorite" alt="heart" disabled></paper-icon-button>
+          <paper-icon-button icon="arrow-back" alt="arrow-back" disabled></paper-icon-button>
+          <paper-icon-button icon="arrow-forward" alt="arrow-forward" disabled></paper-icon-button>
+          <paper-icon-button icon="clear" alt="clear" disabled></paper-icon-button>
+          <paper-icon-button icon="polymer" alt="polymer" disabled></paper-icon-button>
+          <paper-icon-button src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat" disabled></paper-icon-button>
+        </div>
+      </div>
+
+      <div>
+        <h4>Color</h4>
+        <div class="horizontal-section">
+          <paper-icon-button icon="menu" alt="menu" class="blue"></paper-icon-button>
+          <paper-icon-button icon="favorite" alt="heart" class="red"></paper-icon-button>
+          <paper-icon-button icon="arrow-back" alt="arrow-back" class="orange"></paper-icon-button>
+          <paper-icon-button icon="arrow-forward" alt="arrow-forward" class="green"></paper-icon-button>
+          <paper-icon-button icon="clear" alt="clear" class="blue"></paper-icon-button>
+          <paper-icon-button icon="polymer" alt="polymer" class="red"></paper-icon-button>
+          <paper-icon-button class="blue" src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="octocat"></paper-icon-button>
+        </div>
+      </div>
+
+    </pa-simple-grid>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-icon-buttons'
+      });
+    })();
+  </script>
+
+</dom-module>

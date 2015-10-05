@@ -1,0 +1,51 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../widgets/pa-sliders.html">
+<link rel="import" href="../widgets/pa-dialog.html">
+
+<dom-module id="pa-ui-other">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      .widget {
+        height: auto;
+        min-height: 460px;
+      }
+    </style>
+
+    <pa-simple-grid sm-cols="1" md-cols$='{{cols}}'>
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Sliders</h3>
+          <pa-sliders></pa-sliders>
+        </paper-material>
+      </div>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Paper Dialog</h3>
+          <pa-dialog></pa-dialog>
+        </paper-material>
+      </div>
+
+    </pa-simple-grid>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-ui-other',
+
+        properties: {
+          cols: {
+            type: String,
+            value: '2'
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
