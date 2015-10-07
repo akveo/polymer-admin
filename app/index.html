@@ -60,7 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <span id="browser-sync-binding"></span>
 <template is="dom-bind" id="app">
 
-  <pa-auth-data id="data" location='{{location}}' user="{{user}}"></pa-auth-data>
+  <pa-auth-data id="data" location='{{location}}' user="{{user}}" todos="{{todos}}"></pa-auth-data>
 
   <paper-scroll-header-panel fixed>
 
@@ -140,7 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <section data-route="dashboard">
             <pa-widget-title title="Dashboard" cols='{{cols}}'></pa-widget-title>
-            <pa-dashboard cols='{{cols}}'></pa-dashboard>
+            <pa-dashboard cols='{{cols}}' todos="{{todos}}"></pa-dashboard>
           </section>
 
           <section data-route="charts">

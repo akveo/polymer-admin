@@ -1,5 +1,6 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../../../bower_components/firebase-element/firebase-auth.html">
+<link rel="import" href="../../../../bower_components/firebase-element/firebase-collection.html">
 <link rel="import" href="../../../../bower_components/neon-animation/animations/scale-up-animation.html">
 <link rel="import" href="../../../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../../../bower_components/iron-localstorage/iron-localstorage.html">
@@ -52,6 +53,14 @@
                    user="{{user}}">
     </firebase-auth>
 
+    <firebase-collection location="{{userLocation}}"
+                         data="{{fbTodos}}"
+                         on-firebase-value="_firebaseLoaded"
+                         log>
+    </firebase-collection>
+
+    <firebase-element></firebase-element>
+
     <paper-dialog modal
                   opened="{{!user}}"
                   entry-animation="scale-up-animation"
@@ -78,6 +87,15 @@
           user: {
             observer: '_userChanged',
             notify: true
+          },
+
+          _firebaseConnected: {
+            value: false
+          },
+
+          todos: {
+            type: Array,
+            notify: true
           }
         },
 
@@ -96,6 +114,12 @@
           if (user) {
             this.userLocation = [this.location, 'users', this.user.uid].join('/');
           }
+        },
+
+        _firebaseLoaded: function() {
+          this._firebaseConnected = true;
+          this.todos = this.fbTodos;
+          this.linkPaths('fbTodos', 'todos');
         }
       });
     })();

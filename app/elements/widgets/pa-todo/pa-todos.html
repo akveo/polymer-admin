@@ -17,9 +17,9 @@
       </header>
 
       <div class="todo-list" on-pa-destroy-item="destroyItemAction">
-        <template is="dom-repeat" items="{{items}}" observe="completed">
+        <template is="dom-repeat" items="{{todos}}" observe="completed">
           <pa-todo-item item="{{item}}"></pa-todo-item>
-        </template>
+         </template>
       </div>
 
     </section>
@@ -36,7 +36,7 @@
 
         properties: {
           modelId: String,
-          items: {
+          todos: {
             type: Array
           },
           model: {
@@ -51,7 +51,7 @@
         keypressAction: function(e) {
           if (e.keyCode === ENTER_KEY) {
             var input = document.getElementById('todoInput').$.input;
-            this.model.newItem(input.value);
+            this.newItem(input.value);
             input.value = '';
           }
         },
@@ -61,8 +61,27 @@
         },
 
         destroyItemAction: function(e, detail) {
-          this.model.destroyItem(detail);
+          this.destroyItem(detail);
         },
+
+        newItem: function(title) {
+          title = String(title).trim();
+
+          if (!title) {
+            return;
+          }
+
+          this.unshift('todos', {
+            title: title,
+            completed: false
+          });
+        },
+
+        destroyItem: function(item) {
+          var i = this.todos.indexOf(item);
+          i !== -1 && this.splice('todos', i, 1);
+        }
+
       });
     })();
   </script>

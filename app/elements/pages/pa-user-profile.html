@@ -26,7 +26,6 @@
         display: block;
         margin-bottom: 12px;
       }
-
     </style>
 
     <pa-simple-grid>
@@ -34,33 +33,19 @@
         <paper-material class="widget" elevation="1">
           <h3>General Information</h3>
 
-          <pa-profile-picture src="../../images/pic-profile.png"></pa-profile-picture>
+          <pa-profile-picture src="{{ user.google.cachedUserProfile.picture }}"></pa-profile-picture>
 
           <pa-simple-grid md-cols="2">
             <div>
-              <paper-input label="First Name" value="Anastasiya" auto-validate required></paper-input>
-              <paper-input label="Last Name" value="Tyshkavets" auto-validate required></paper-input>
+              <paper-input label="First Name" value="{{ user.google.cachedUserProfile.given_name }}" auto-validate required></paper-input>
+              <paper-input label="Last Name" value="{{ user.google.cachedUserProfile.family_name }}" auto-validate required></paper-input>
             </div>
             <div>
-              <paper-input label="Department" value="Web Development"></paper-input>
-              <paper-input label="Job Title" value="Front End Web Developer"></paper-input>
+              <paper-input label="Department" value=""></paper-input>
+              <paper-input label="Job Title" value=""></paper-input>
             </div>
           </pa-simple-grid>
 
-        </paper-material>
-      </div>
-
-      <div>
-        <paper-material class="widget" elevation="1">
-          <h3>Change Password</h3>
-          <pa-simple-grid md-cols="2">
-            <div>
-              <paper-input label="New Password" type="password"></paper-input>
-            </div>
-            <div>
-              <paper-input label="Confirm Password" type="password"></paper-input>
-            </div>
-          </pa-simple-grid>
         </paper-material>
       </div>
 
@@ -69,7 +54,7 @@
           <h3>Contact Information</h3>
           <pa-simple-grid md-cols="2">
             <div>
-              <gold-email-input label="Email" value="email@gmail.com" auto-validate></gold-email-input>
+              <gold-email-input label="Email" auto-validate on-blur="saveData"></gold-email-input>
               <gold-phone-input label="Phone" auto-validate></gold-phone-input>
             </div>
             <div>
