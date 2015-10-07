@@ -60,7 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <span id="browser-sync-binding"></span>
 <template is="dom-bind" id="app">
 
-  <pa-login location='{{location}}'></pa-login>
+  <pa-auth-data id="data" location='{{location}}' user="{{user}}"></pa-auth-data>
 
   <paper-scroll-header-panel fixed>
 
@@ -70,7 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <span class="flex"></span>
       <paper-icon-button icon="refresh" class="refresh-icon"></paper-icon-button>
       <pa-search></pa-search>
-      <pa-auth-info location='{{location}}'></pa-auth-info>
+      <pa-auth-info location='{{location}}' user="{{user}}" on-sign-out="signOut"></pa-auth-info>
     </paper-toolbar>
 
     <paper-drawer-panel id="paperDrawerPanel">

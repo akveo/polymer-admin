@@ -1,5 +1,4 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/firebase-element/firebase-auth.html">
 <link rel="import" href="../../../../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../../../../bower_components/iron-dropdown/demo/x-select.html">
 
@@ -9,6 +8,11 @@
       .account-menu {
         position: relative;
         padding-right: 24px;
+        display: none;
+      }
+
+      .account-menu[show] {
+        display: block;
       }
 
       .profile-pic {
@@ -56,15 +60,9 @@
       }
     </style>
 
-    <firebase-auth id="auth"
-                   location="{{location}}"
-                   provider="google"
-                   user="{{user}}">
-    </firebase-auth>
-
-    <div class="account-menu">
+    <div class="account-menu" show$="{{user}}">
       <div class="profile-pic dropdown-trigger" on-click="open">
-        <img src="{{ userpic }}">
+        <img src="{{ user.google.profileImageURL }}">
       </div>
 
       <iron-dropdown id="dropdown"
@@ -93,15 +91,13 @@
 
         properties: {
           user: {
-            observer: '_userChanged'
+            notify: true
           },
-          userpic: {
-            type: String,
-            value: "../../../images/no-photo.png"
-          },
+
           location: {
             type: String
           },
+
           openAnimationConfig: {
             type: Array,
             value: function() {
@@ -134,22 +130,9 @@
           }
         },
 
-        _userChanged: function(user) {
-          if (user) {
-            this.userLocation = [this.location, 'users', this.user.uid].join('/');
-            this.userpic = this.user.google.profileImageURL;
-          }
-        },
-
-        signOut: function() {
-          var ref = new Firebase(this.location);
-          ref.unauth();
-          this.user = null;
-        },
-
         signOutClick: function() {
           this.close();
-          this.signOut();
+          this.fire('sign-out');
         },
 
         open: function() {

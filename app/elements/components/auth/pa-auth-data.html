@@ -4,7 +4,7 @@
 <link rel="import" href="../../../../bower_components/neon-animation/animations/fade-out-animation.html">
 <link rel="import" href="../../../../bower_components/iron-localstorage/iron-localstorage.html">
 
-<dom-module id="pa-login">
+<dom-module id="pa-auth-data">
   <template>
     <style>
       paper-dialog {
@@ -72,16 +72,23 @@
     (function() {
       'use strict';
       Polymer({
-        is: 'pa-login',
+        is: 'pa-auth-data',
 
         properties: {
           user: {
-            observer: '_userChanged'
+            observer: '_userChanged',
+            notify: true
           }
         },
 
         signIn: function() {
           this.$.auth.login();
+        },
+
+        signOut: function() {
+          var ref = new Firebase(this.location);
+          ref.unauth();
+          this.user = null;
         },
 
         // Setup user ref in firebase if auth succeeds
