@@ -1,0 +1,97 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/firebase-element/firebase-auth.html">
+<link rel="import" href="../../../../bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="../../../../bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="../../../../bower_components/iron-localstorage/iron-localstorage.html">
+
+<dom-module id="pa-login">
+  <template>
+    <style>
+      paper-dialog {
+        padding: 32px;
+        background: #fff;
+      }
+
+      .google-sign-in {
+        display: inline-block;
+        background: #4285f4;
+        color: white;
+        width: 190px;
+        border-radius: 5px;
+        white-space: nowrap;
+        outline: none;
+      }
+
+      .google-sign-in:hover {
+        cursor: pointer;
+      }
+
+      .google-sign-in-icon {
+        background: url('../../../images/google-sign-in/g-normal.png') transparent 5px 50% no-repeat;
+        display: inline-block;
+        vertical-align: middle;
+        width: 42px;
+        height: 42px;
+        border-right: #2265d4 1px solid;
+      }
+
+      .google-sign-in-label {
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 42px;
+        padding-right: 42px;
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Roboto', sans-serif;
+      }
+    </style>
+
+    <firebase-auth id="auth"
+                   location="{{location}}"
+                   provider="google"
+                   user="{{user}}">
+    </firebase-auth>
+
+    <paper-dialog modal
+                  opened="{{!user}}"
+                  entry-animation="scale-up-animation"
+                  exit-animation="fade-out-animation">
+      <h2>Oh hai! Please sign in</h2>
+      <div>
+        <div class="google-sign-in"
+             tabindex="0"
+             on-tap="signIn">
+          <span class="google-sign-in-icon"></span>
+          <span class="google-sign-in-label">Google</span>
+        </div>
+      </div>
+    </paper-dialog>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+      Polymer({
+        is: 'pa-login',
+
+        properties: {
+          user: {
+            observer: '_userChanged'
+          }
+        },
+
+        signIn: function() {
+          this.$.auth.login();
+        },
+
+        // Setup user ref in firebase if auth succeeds
+        _userChanged: function(user) {
+          if (user) {
+            this.userLocation = [this.location, 'users', this.user.uid].join('/');
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

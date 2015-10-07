@@ -17,7 +17,8 @@
     "gold-email-input": "PolymerElements/gold-email-input#~1.0.5",
     "todomvc-common": "~1.0.2",
     "todomvc-app-css": "~2.0.1",
-    "iron-selector": "polymerelements/iron-selector#~1.0.5"
+    "iron-selector": "polymerelements/iron-selector#~1.0.5",
+    "firebase-element": "GoogleWebComponents/firebase-element#~1.0.6"
   },
   "devDependencies": {
     "web-component-tester": "*",

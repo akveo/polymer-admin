@@ -1,0 +1,166 @@
+<link rel="import" href="../../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../../bower_components/firebase-element/firebase-auth.html">
+<link rel="import" href="../../../../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../../../../bower_components/iron-dropdown/demo/x-select.html">
+
+<dom-module id="pa-auth-info">
+  <template>
+    <style>
+      .account-menu {
+        position: relative;
+        padding-right: 24px;
+      }
+
+      .profile-pic {
+        width: 45px;
+        height: 45px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .profile-pic img {
+        width: 100%;
+      }
+
+      .dropdown-content {
+        display: block;
+        position: relative;
+        border-radius: 2px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        background: white;
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        min-width: 140px;
+        color: var(--primary-text-color);
+      }
+
+      .username {
+        margin-bottom: 12px;
+      }
+
+      a {
+        display: block;
+        position: relative;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 32px;
+        white-space: nowrap;
+        align-items: center;
+        color: var(--primary-text-color);
+      }
+
+      a:hover {
+        color: var(--default-primary-color);
+      }
+    </style>
+
+    <firebase-auth id="auth"
+                   location="{{location}}"
+                   provider="google"
+                   user="{{user}}">
+    </firebase-auth>
+
+    <div class="account-menu">
+      <div class="profile-pic dropdown-trigger" on-click="open">
+        <img src="{{ userpic }}">
+      </div>
+
+      <iron-dropdown id="dropdown"
+                     vertical-align="top"
+                     horizontal-align="right"
+                     open-animation-config="[[openAnimationConfig]]"
+                     close-animation-config="[[closeAnimationConfig]]">
+
+        <div class="dropdown-content">
+          <div class="username">{{user.google.displayName}}</div>
+          <a data-route="user-profile" href="/user-profile" on-click="close">Profile</a>
+          <a href="javascript:void(0)" on-click="signOutClick">Sign Out</a>
+        </div>
+
+      </iron-dropdown>
+    </div>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-auth-info',
+
+        properties: {
+          user: {
+            observer: '_userChanged'
+          },
+          userpic: {
+            type: String,
+            value: "../../../images/no-photo.png"
+          },
+          location: {
+            type: String
+          },
+          openAnimationConfig: {
+            type: Array,
+            value: function() {
+              return [{
+                name: 'fade-in-animation',
+                timing: {
+                  delay: 150,
+                  duration: 50
+                }
+              }, {
+                name: 'expand-animation',
+                timing: {
+                  delay: 150,
+                  duration: 200
+                }
+              }];
+            }
+          },
+
+          closeAnimationConfig: {
+            type: Array,
+            value: function() {
+              return [{
+                name: 'fade-out-animation',
+                timing: {
+                  duration: 200
+                }
+              }];
+            }
+          }
+        },
+
+        _userChanged: function(user) {
+          if (user) {
+            this.userLocation = [this.location, 'users', this.user.uid].join('/');
+            this.userpic = this.user.google.profileImageURL;
+          }
+        },
+
+        signOut: function() {
+          var ref = new Firebase(this.location);
+          ref.unauth();
+          this.user = null;
+        },
+
+        signOutClick: function() {
+          this.close();
+          this.signOut();
+        },
+
+        open: function() {
+          this.$.dropdown.open();
+        },
+
+        close: function() {
+          this.$.dropdown.close();
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

@@ -68,4 +68,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     e.target.parentNode.classList.toggle('submenu-expanded');
   };
 
+  app.location = 'https://polymer-admin.firebaseio.com';
+
 })(document);
