@@ -1,25 +1,79 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
-
-<link rel="import" href="../../../../bower_components/iron-localstorage/iron-localstorage.html">
-<link rel="import" href="pa-todo-model.html">
-<link rel="import" href="pa-todos.html">
+<link rel="import" href="pa-todo-item.html">
 
 <dom-module id="pa-todo">
   <template>
-    <style include="shared-styles"></style>
-    <style></style>
+    <style>
+      .todo-list {
+        height: 252px;
+        overflow-y: auto;
+        margin-left: -14px;
+      }
+    </style>
 
-    <pa-todos todos="{{todos}}"></pa-todos>
+    <section id="todoapp">
+      <header id="header">
+        <paper-input placeholder="Add a to-do" no-label-float id="todoInput"></paper-input>
+      </header>
+
+      <div class="todo-list" on-pa-destroy-item="destroyItemAction">
+        <template is="dom-repeat" items="{{todos}}" observe="completed">
+          <pa-todo-item item="{{item}}"></pa-todo-item>
+        </template>
+      </div>
+
+    </section>
   </template>
 
   <script>
     (function() {
       'use strict';
 
+      var ENTER_KEY = 13;
+
       Polymer({
-        is: 'pa-todo'
+        is: 'pa-todo',
+
+        properties: {
+          modelId: String,
+          todos: {
+            type: Array
+          },
+          model: {
+            type: Object
+          }
+        },
+
+        listeners: {
+          'keypress': 'keypressAction'
+        },
+
+        keypressAction: function(e) {
+          if (e.keyCode === ENTER_KEY) {
+            var input = document.getElementById('todoInput').$.input;
+            this.newItem(input.value);
+            input.value = '';
+          }
+        },
+
+        destroyItemAction: function(e, detail) {
+          var i = this.todos.indexOf(detail);
+          i !== -1 && this.splice('todos', i, 1);
+        },
+
+        newItem: function(title) {
+          title = String(title).trim();
+
+          if (!title) {
+            return;
+          }
+
+          this.unshift('todos', {
+            title: title,
+            completed: false
+          });
+        },
       });
     })();
   </script>
-
 </dom-module>
