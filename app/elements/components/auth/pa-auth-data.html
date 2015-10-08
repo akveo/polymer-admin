@@ -53,10 +53,9 @@
                    user="{{user}}">
     </firebase-auth>
 
-    <firebase-collection location="{{userLocation}}"
+    <firebase-collection location="{{todosLocation}}"
                          data="{{fbTodos}}"
-                         on-firebase-value="_firebaseLoaded"
-                         log>
+                         on-firebase-value="_firebaseTodoLoaded">
     </firebase-collection>
 
     <firebase-element></firebase-element>
@@ -112,11 +111,11 @@
         // Setup user ref in firebase if auth succeeds
         _userChanged: function(user) {
           if (user) {
-            this.userLocation = [this.location, 'users', this.user.uid].join('/');
+            this.todosLocation = [this.location, 'todos', this.user.uid].join('/');
           }
         },
 
-        _firebaseLoaded: function() {
+        _firebaseTodoLoaded: function() {
           this._firebaseConnected = true;
           this.todos = this.fbTodos;
           this.linkPaths('fbTodos', 'todos');

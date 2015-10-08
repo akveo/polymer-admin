@@ -29,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       drawerPanel.closeDrawer();
     }
 
-    var charts = document.getElementsByTagName("google-chart");
+    var charts = document.getElementsByTagName('google-chart');
     setTimeout(function(){
       for (var i = 0; i < charts.length; i++) {
         charts[i].drawChart();
@@ -51,7 +51,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     document.getElementById('mainContainer').scrollTop = 0;
   };
 
-  app.cols = "2";
+  app.cols = '2';
 
   app.toggleSubmenu = function(e) {
     e.target.parentNode.classList.toggle('submenu-expanded');

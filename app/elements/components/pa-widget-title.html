@@ -60,7 +60,7 @@
           colsview: {
             type: Boolean,
             value: true,
-            computed:"_computeView(cols)",
+            computed: '_computeView(cols)',
             notify: true
           }
         },
@@ -80,7 +80,7 @@
         },
 
         resizeCharts: function() {
-          var charts = document.getElementsByTagName("google-chart");
+          var charts = document.getElementsByTagName('google-chart');
           for (var i = 0; i < charts.length; i++) {
             charts[i].drawChart();
           }

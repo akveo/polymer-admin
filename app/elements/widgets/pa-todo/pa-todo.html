@@ -58,7 +58,9 @@
 
         destroyItemAction: function(e, detail) {
           var i = this.todos.indexOf(detail);
-          i !== -1 && this.splice('todos', i, 1);
+          if (i !== -1) {
+            this.splice('todos', i, 1);
+          }
         },
 
         newItem: function(title) {
