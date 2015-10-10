@@ -1,7 +1,3 @@
-<link rel="import" href="../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../bower_components/google-chart/google-chart.html">
-<link rel="import" href="../../../bower_components/google-youtube/google-youtube.html">
-<link rel="import" href="../../../bower_components/google-feeds/google-feeds.html">
 <link rel="import" href="../widgets/pa-todo/pa-todo.html">
 
 <dom-module id="pa-dashboard">
@@ -100,7 +96,7 @@
         },
 
         ready: function() {
-          this.$.feeder.feed = 'http://blog.polymer-project.org/feed.xml';
+          this.$.feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
         }
       });
     })();

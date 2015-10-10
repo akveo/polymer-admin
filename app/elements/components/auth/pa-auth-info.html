@@ -1,13 +1,28 @@
-<link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/iron-dropdown/iron-dropdown.html">
-<link rel="import" href="../../../../bower_components/iron-dropdown/demo/x-select.html">
-
 <dom-module id="pa-auth-info">
   <template>
     <style>
+      :host {
+        display: block;
+        padding-right: 24px;
+      }
+
+      a.singin-link {
+        text-transform: uppercase;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        display: none;
+      }
+
+      a.singin-link[show] {
+        display: block;
+      }
+
+      a.singin-link:hover {
+      }
+
       .account-menu {
         position: relative;
-        padding-right: 24px;
         display: none;
       }
 
@@ -43,7 +58,7 @@
         margin-bottom: 12px;
       }
 
-      a {
+      .dropdown-content a {
         display: block;
         position: relative;
         text-decoration: none;
@@ -55,11 +70,12 @@
         color: var(--primary-text-color);
       }
 
-      a:hover {
+      .dropdown-content a:hover {
         color: var(--default-primary-color);
       }
     </style>
 
+    <a href="javascript:void(0)" show$="{{!user}}" class="singin-link" on-click="signInClick">Sign in</a>
     <div class="account-menu" show$="{{user}}">
       <div class="profile-pic dropdown-trigger" on-click="open">
         <img src="{{ user.google.profileImageURL }}">
@@ -72,9 +88,9 @@
                      close-animation-config="[[closeAnimationConfig]]">
 
         <div class="dropdown-content">
-          <div class="username">{{user.google.displayName}}</div>
+          <div class="username"><span>{{profile.name}}</span> <span>{{profile.lastname}}</span></div>
           <a data-route="user-profile" href="/user-profile" on-click="close">Profile</a>
-          <a href="javascript:void(0)" on-click="signOutClick">Sign Out</a>
+          <a href="javascript:void(0)" on-click="signOutClick">Sign out</a>
         </div>
 
       </iron-dropdown>
@@ -90,6 +106,9 @@
         is: 'pa-auth-info',
 
         properties: {
+          profile: {
+            type: Object
+          },
           openAnimationConfig: {
             type: Array,
             value: function() {
@@ -125,6 +144,10 @@
         signOutClick: function() {
           this.close();
           this.fire('sign-out');
+        },
+
+        signInClick: function() {
+          this.fire('sign-in');
         },
 
         open: function() {

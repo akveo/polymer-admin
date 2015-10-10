@@ -1,4 +1,3 @@
-<link rel="import" href="../../../bower_components/polymer/polymer.html">
 <link rel="import" href="../components/pa-profile-picture.html">
 
 <dom-module id="pa-user-profile">
@@ -33,16 +32,16 @@
         <paper-material class="widget" elevation="1">
           <h3>General Information</h3>
 
-          <pa-profile-picture src="{{ user.google.cachedUserProfile.picture }}"></pa-profile-picture>
+          <pa-profile-picture src="{{ profile.picture }}"></pa-profile-picture>
 
           <pa-simple-grid md-cols="2">
             <div>
-              <paper-input label="First Name" value="{{ user.google.cachedUserProfile.given_name }}" auto-validate required></paper-input>
-              <paper-input label="Last Name" value="{{ user.google.cachedUserProfile.family_name }}" auto-validate required></paper-input>
+              <paper-input label="First Name" value="{{ profile.name }}" auto-validate required></paper-input>
+              <paper-input label="Last Name" value="{{ profile.lastname }}" auto-validate required></paper-input>
             </div>
             <div>
-              <paper-input label="Department" value=""></paper-input>
-              <paper-input label="Job Title" value=""></paper-input>
+              <paper-input label="Department" value="{{ profile.department }}" value=""></paper-input>
+              <paper-input label="Job Title" value="{{ profile.job }}"></paper-input>
             </div>
           </pa-simple-grid>
 
@@ -54,12 +53,12 @@
           <h3>Contact Information</h3>
           <pa-simple-grid md-cols="2">
             <div>
-              <gold-email-input label="Email" auto-validate on-blur="saveData"></gold-email-input>
-              <gold-phone-input label="Phone" auto-validate></gold-phone-input>
+              <gold-email-input label="Email" value="{{ profile.email }}" auto-validate on-blur="saveData"></gold-email-input>
+              <gold-phone-input label="Phone" value="{{ profile.phone }}" auto-validate></gold-phone-input>
             </div>
             <div>
-              <paper-input label="Office Location"></paper-input>
-              <paper-input label="Room"></paper-input>
+              <paper-input label="Office Location" value="{{ profile.office }}"></paper-input>
+              <paper-input label="Room" value="{{ profile.room }}"></paper-input>
             </div>
           </pa-simple-grid>
         </paper-material>
@@ -70,14 +69,14 @@
           <h3>Send Email Notifications</h3>
           <pa-simple-grid md-cols="2" class="notifications-block">
             <div>
-              <div class="line"><paper-toggle-button checked></paper-toggle-button><span>When I receive a message</span></div>
-              <div class="line"><paper-toggle-button checked></paper-toggle-button><span>When Someone sends me an invitation</span></div>
-              <div class="line"><paper-toggle-button></paper-toggle-button><span>When profile information changes</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.message}}"></paper-toggle-button><span>When I receive a message</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.invitation}}"></paper-toggle-button><span>When Someone sends me an invitation</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.changes}}"></paper-toggle-button><span>When profile information changes</span></div>
             </div>
             <div>
-              <div class="line"><paper-toggle-button></paper-toggle-button><span>When anyone logs into your account from a new device or browser</span></div>
-              <div class="line"><paper-toggle-button checked></paper-toggle-button><span>Weekly Reports</span></div>
-              <div class="line"><paper-toggle-button></paper-toggle-button><span>Daily Reports</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.login}}"></paper-toggle-button><span>When anyone logs into your account from a new device or browser</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.weekly}}"></paper-toggle-button><span>Weekly Reports</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.daily}}"></paper-toggle-button><span>Daily Reports</span></div>
             </div>
           </pa-simple-grid>
         </paper-material>
@@ -97,6 +96,10 @@
           cols: {
             type: String,
             value: '2'
+          },
+
+          profile: {
+            type: Object
           }
         }
       });

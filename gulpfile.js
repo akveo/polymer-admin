@@ -152,7 +152,9 @@ gulp.task('html', function () {
 // scripts and CSS for you.
 gulp.task('vulcanize', function () {
   return gulp.src('dist/index.html')
-    .pipe(polybuild({maximumCrush: true}))
+    .pipe(polybuild({
+        maximumCrush: false
+      }))
     .pipe(gulp.dest('dist/'));
 });
 
@@ -268,7 +270,8 @@ gulp.task('default', ['clean'], function (cb) {
     ['copy', 'styles'],
     'elements',
     ['jshint', 'images', 'fonts', 'html'],
-    'vulcanize','rename-index', // 'cache-config',
+    //'vulcanize',
+    'rename-index', // 'cache-config',
     cb);
 });
 

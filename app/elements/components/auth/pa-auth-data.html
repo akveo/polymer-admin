@@ -1,10 +1,3 @@
-<link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/firebase-element/firebase-auth.html">
-<link rel="import" href="../../../../bower_components/firebase-element/firebase-collection.html">
-<link rel="import" href="../../../../bower_components/neon-animation/animations/scale-up-animation.html">
-<link rel="import" href="../../../../bower_components/neon-animation/animations/fade-out-animation.html">
-<link rel="import" href="../../../../bower_components/iron-localstorage/iron-localstorage.html">
-
 <dom-module id="pa-auth-data">
   <template>
     <style>
@@ -58,22 +51,13 @@
                          on-firebase-value="_firebaseTodoLoaded">
     </firebase-collection>
 
-    <firebase-element></firebase-element>
+    <firebase-document id="fbDoc"
+                       location="{{profileLocation}}"
+                       data="{{profile}}"
+                       on-firebase-value="_firebaseProfileLoaded">
+    </firebase-document>
 
-    <paper-dialog modal
-                  opened="{{!user}}"
-                  entry-animation="scale-up-animation"
-                  exit-animation="fade-out-animation">
-      <h2>Oh hai! Please sign in</h2>
-      <div>
-        <div class="google-sign-in"
-             tabindex="0"
-             on-tap="signIn">
-          <span class="google-sign-in-icon"></span>
-          <span class="google-sign-in-label">Google</span>
-        </div>
-      </div>
-    </paper-dialog>
+    <firebase-element></firebase-element>
   </template>
 
   <script>
@@ -95,6 +79,11 @@
           todos: {
             type: Array,
             notify: true
+          },
+
+          profile: {
+            type: Object,
+            notify: true
           }
         },
 
@@ -112,6 +101,36 @@
         _userChanged: function(user) {
           if (user) {
             this.todosLocation = [this.location, 'todos', this.user.uid].join('/');
+            this.profileLocation = [this.location, 'profile', this.user.uid].join('/');
+          }
+        },
+
+        setDefaultProfile: function() {
+          this.profile = {
+            name: this.user.google.cachedUserProfile.given_name,
+            lastname: this.user.google.cachedUserProfile.family_name,
+            email: '',
+            phone: '',
+            picture: this.user.google.cachedUserProfile.picture,
+            department: '',
+            job: '',
+            office: '',
+            room: '',
+            notification: {
+              message: true,
+              invitation: true,
+              changes: false,
+              login: false,
+              weekly: true,
+              daily: false
+            }
+          };
+        },
+
+        _firebaseProfileLoaded: function() {
+          this.set('profile', this.profile);
+          if (!this.profile) {
+           this.setDefaultProfile();
           }
         },
 
@@ -120,6 +139,7 @@
           this.todos = this.fbTodos;
           this.linkPaths('fbTodos', 'todos');
         }
+
       });
     })();
   </script>

@@ -60,7 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <span id="browser-sync-binding"></span>
 <template is="dom-bind" id="app">
 
-  <pa-auth-data id="data" location='{{location}}' user="{{user}}" todos="{{todos}}"></pa-auth-data>
+  <pa-auth-data id="data" location='{{location}}' user="{{user}}" todos="{{todos}}" profile="{{profile}}"></pa-auth-data>
 
   <paper-scroll-header-panel fixed>
 
@@ -70,7 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <span class="flex"></span>
       <paper-icon-button icon="refresh" class="refresh-icon"></paper-icon-button>
       <pa-search></pa-search>
-      <pa-auth-info location='{{location}}' user="{{user}}" on-sign-out="signOut"></pa-auth-info>
+      <pa-auth-info location='{{location}}' user="{{user}}"  profile='{{profile}}' on-sign-out="signOut" on-sign-in="signIn"></pa-auth-info>
     </paper-toolbar>
 
     <paper-drawer-panel id="paperDrawerPanel">
@@ -125,7 +125,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <span>Tables</span>
           </a>
 
-          <a data-route="user-profile" href="/user-profile" on-click="onDataRouteClick">
+          <a data-route="user-profile" href="/user-profile" on-click="onDataRouteClick" hide$="{{!user}}">
             <iron-icon icon="accessibility"></iron-icon>
             <span>User Profile</span>
           </a>
@@ -180,7 +180,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
           <section data-route="user-profile">
             <pa-widget-title title="User Profile" cols='{{cols}}'></pa-widget-title>
-            <pa-user-profile cols='{{cols}}' user="{{user}}"></pa-user-profile>
+            <pa-user-profile cols='{{cols}}' user="{{user}}" profile="{{profile}}"></pa-user-profile>
           </section>
 
         </iron-pages>
