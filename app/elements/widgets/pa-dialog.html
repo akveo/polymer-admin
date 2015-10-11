@@ -52,7 +52,7 @@
       }
     </style>
 
-    <section onclick="clickHandler(event)">
+    <section on-click="clickHandler">
       <h4>Dialog layouts</h4>
 
       <paper-button raised data-dialog="dialog" class="orange">plain dialog</paper-button>
@@ -102,7 +102,7 @@
 
     </section>
 
-    <section onclick="clickHandler(event)">
+    <section on-click="clickHandler">
       <h4>Custom styling</h4>
       <paper-button raised data-dialog="colors" class="green">colors</paper-button>
       <paper-button raised data-dialog="position" class="green">size &amp; position</paper-button>
@@ -116,7 +116,7 @@
       </paper-dialog>
     </section>
 
-    <section onclick="clickHandler(event)">
+    <section on-click="clickHandler">
       <h4>Transitions</h4>
       <paper-button raised data-dialog="animated" class="blue">transitions</paper-button>
       <paper-dialog id="animated" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
@@ -131,7 +131,24 @@
       'use strict';
 
       Polymer({
-        is: 'pa-dialog'
+        is: 'pa-dialog',
+
+        clickHandler: function(e) {
+          var button = e.target;
+          while (!button.hasAttribute('data-dialog') && button !== document.body) {
+            button = button.parentElement;
+          }
+
+          if (!button.hasAttribute('data-dialog')) {
+            return;
+          }
+
+          var id = button.getAttribute('data-dialog');
+          var dialog = document.getElementById(id);
+          if (dialog) {
+            dialog.open();
+          }
+        }
       });
     })();
   </script>

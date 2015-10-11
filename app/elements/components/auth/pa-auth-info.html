@@ -78,7 +78,7 @@
     <a href="javascript:void(0)" show$="{{!user}}" class="singin-link" on-click="signInClick">Sign in</a>
     <div class="account-menu" show$="{{user}}">
       <div class="profile-pic dropdown-trigger" on-click="open">
-        <img src="{{ user.google.profileImageURL }}">
+        <img src="{{profile.picture}}">
       </div>
 
       <iron-dropdown id="dropdown"

@@ -3,9 +3,8 @@
     <style include="shared-styles"></style>
     <style>
       .userpic {
-        border: 1px solid #A0C3FF;
-        width: 202px;
-        height: 202px;
+        width: 200px;
+        height: 200px;
         position: relative;
         box-sizing: border-box;
       }
@@ -23,7 +22,7 @@
       }
       span {
         display: none;
-        width: 202px;
+        width: 200px;
         background: rgba(0,0,0,.7);
         transition: all .2s ease-in-out;
         color: #fff;
@@ -36,9 +35,7 @@
         font-size: 13px;
         cursor: pointer;
       }
-      input {
-        display: none;
-      }
+
       paper-icon-button {
         display: none;
         position: absolute;
@@ -47,19 +44,65 @@
         --iron-icon-height: 24px;
         --iron-icon-width: 24px;
       }
+
       .userpic:hover span, .userpic:hover paper-icon-button{
         display: block;
       }
+
+      paper-dialog {
+        width: 600px;
+        background: #fff;
+        max-height: none !important;
+        max-width: none !important;
+      }
+
+      paper-dialog paper-button {
+        float: right;
+        display: block;
+        padding: 8px 12px;
+        margin-right: 24px;
+      }
+
+      paper-dialog paper-button.cancel {
+        margin-right: 12px;
+      }
+
+      /* todo: remove code duplication */
+      paper-button.colorful {
+        color: #4285f4;
+      }
+
+      paper-button[raised].colorful {
+        background: #4285f4;
+        color: #fff;
+      }
+
+      .hidden-input {
+        display: none;
+      }
+
     </style>
 
     <div class="userpic">
       <div>
-        <img src="{{ src }}" on-click="uploadPicture">
+        <img src="{{ profile.picture }}" on-click="showModal">
       </div>
-      <paper-icon-button icon="clear" on-click="removePicture"></paper-icon-button> <!-- todo: show only when there is a picture -->
-      <span on-click="uploadPicture">Change Profile Picture</span>
-      <input type="file" >
+      <paper-icon-button icon="clear" on-click="removePicture"></paper-icon-button>
+      <span on-click="showModal">Change Profile Picture</span>
     </div>
+
+    <paper-dialog modal
+                  opened="{{changePic}}"
+                  entry-animation="scale-up-animation"
+                  exit-animation="fade-out-animation">
+        <paper-input label="New Photo URL" id="profilePictureNew"></paper-input>
+
+        <paper-button tabindex="0" raised class="colorful" on-click="savePicture">Change Photo</paper-button>
+        <paper-button tabindex="0" raised class="cancel" on-click="cancel">Cancel</paper-button>
+    </paper-dialog>
+
+    <!-- todo: remove, find out how to change profile in firebase without it -->
+    <paper-input class="hidden-input" value="{{ profile.picture }}" id="profilePicture"></paper-input>
 
   </template>
 
@@ -71,16 +114,56 @@
         is: 'pa-profile-picture',
 
         properties: {
-          src: {
+          changePic: {
+            type: Boolean,
+            value: false
+          },
+
+          defaultPicture: {
             type: String,
             value: '../../images/no-photo.jpg'
           }
         },
 
-        uploadPicture: function() {
+        showModal: function() {
+          this.changePic = true;
+        },
+
+        isImageExist: function(url, callback)
+        {
+          var img = new Image();
+          img.onload = function() {
+            callback(true);
+          };
+          img.onerror = function() {
+            callback(false);
+          };
+          img.src = url;
+        },
+
+        clearNewPictureInput: function() {
+          this.$.profilePictureNew.value = '';
+        },
+
+        savePicture: function() {
+          this.changePic = false;
+          var profilePictureNew = this.$.profilePictureNew.value;
+          var t = this;
+
+          this.isImageExist(profilePictureNew, function(exists) {
+            t.$.profilePicture.value = exists ? profilePictureNew : t.defaultPicture;
+          });
+
+          this.clearNewPictureInput();
+        },
+
+        cancel: function() {
+          this.changePic = false;
+          this.clearNewPictureInput();
         },
 
         removePicture: function() {
+          this.$.profilePicture.value = this.defaultPicture;
         }
       });
     })();

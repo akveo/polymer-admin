@@ -54,14 +54,8 @@
       </div>
       <div>
         <paper-material class="widget" elevation="1">
-          <h3>Awesome Video</h3>
-          <google-youtube
-              video-id="jVn8tlnwAEs"
-              height="270px"
-              width="480px"
-              rel="0"
-              autoplay="0">
-          </google-youtube>
+          <h3>Todo List</h3>
+          <pa-todo todos="{{todos}}"></pa-todo>
         </paper-material>
       </div>
       <div>
@@ -74,8 +68,14 @@
       </div>
       <div>
         <paper-material class="widget" elevation="1">
-          <h3>Todo List</h3>
-          <pa-todo todos="{{todos}}"></pa-todo>
+          <h3>Awesome Video</h3>
+          <google-youtube
+              video-id="jVn8tlnwAEs"
+              height="270px"
+              width="480px"
+              rel="0"
+              autoplay="0">
+          </google-youtube>
         </paper-material>
       </div>
     </pa-simple-grid>
