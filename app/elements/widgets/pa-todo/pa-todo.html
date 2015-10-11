@@ -36,7 +36,8 @@
         properties: {
           modelId: String,
           todos: {
-            type: Array
+            type: Array,
+            observer: '_todosChanged'
           },
           model: {
             type: Object
@@ -45,6 +46,10 @@
 
         listeners: {
           'keypress': 'keypressAction'
+        },
+
+        _todosChanged: function(){
+          this.todos.reverse();
         },
 
         keypressAction: function(e) {
