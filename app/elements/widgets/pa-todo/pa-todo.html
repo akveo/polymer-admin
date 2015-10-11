@@ -8,20 +8,31 @@
         overflow-y: auto;
         margin-left: -14px;
       }
+
+      :host > div {
+        display: none;
+      }
+
+      :host > div[show] {
+        display: block;
+      }
+
+      .sign-in-msg {
+        font-size: 14px;
+      }
     </style>
 
-    <section id="todoapp">
-      <header id="header">
-        <paper-input placeholder="Add a to-do" no-label-float id="todoInput"></paper-input>
-      </header>
+    <div class="sign-in-msg" show$="{{!user}}">Please, <a href="javascript:void(0)" on-click="signInClick">sign in</a> to use ToDo List</div>
+    <div class="todo-block" show$="{{user}}">
+      <paper-input placeholder="Add a to-do" no-label-float id="todoInput"></paper-input>
 
       <div class="todo-list" on-pa-destroy-item="destroyItemAction">
         <template is="dom-repeat" items="{{todos}}" observe="completed">
           <pa-todo-item item="{{item}}"></pa-todo-item>
         </template>
       </div>
+    </div>
 
-    </section>
   </template>
 
   <script>
@@ -78,6 +89,10 @@
             title: title,
             completed: false
           });
+        },
+
+        signInClick: function() {
+          this.fire('sign-in');
         }
       });
     })();
