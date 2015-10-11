@@ -1,0 +1,55 @@
+<dom-module id="pa-about">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        display: block;
+        @apply(--layout);
+        @apply(--layout-horizontal);
+      }
+
+      .team-photo img {
+        max-width: 298px;
+        max-height: 298px;
+      }
+
+      .team-info {
+        box-sizing: border-box;
+        padding-left: 24px;
+        font-size: 14px;
+      }
+
+      .team-info paper-button {
+        display: block;
+        margin: 24px 0;
+        max-width: 250px;
+        box-sizing: border-box;
+      }
+    </style>
+
+
+    <div class="team-photo">
+      <img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xap1/t31.0-8/11227783_1068430719847926_1076901314358788503_o.jpg" >
+    </div>
+    <div class="team-info flex">
+      Awesome text about Polymer Admin Template and Akveo team.
+      <paper-button raised class="colorful" on-click="goToSourceCode">Source code</paper-button>
+      Please, star the project on github if it was useful for you. :)
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-about',
+
+        goToSourceCode: function() {
+          window.open('https://github.com/akveo/polymer-admin', '_blank');
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

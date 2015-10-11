@@ -1,0 +1,47 @@
+<dom-module id="pa-footer">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        @apply(--layout);
+        @apply(--layout-horizontal);
+        padding: 0 36px 16px;
+        font-size: 13px;
+      }
+
+      .akveo-link a {
+        text-decoration: none;
+        color: var(--default-text-color);
+      }
+
+      .akveo-link a:hover {
+        color: var(--default-primary-color);
+      }
+
+      iron-icon {
+        --iron-icon-height: 14px;
+        --iron-icon-width: 14px;
+        margin: 0 2px 3px;
+        color: var(--paper-pink-500);
+      }
+    </style>
+
+    <div class="copyright flex">
+      Polymer Admin © 2015
+    </div>
+    <div class="akveo-link">
+      Created with <iron-icon icon="favorite"></iron-icon> by <a href="http://akveo.com/" target="_blank">Akveo</a>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-footer'
+      });
+    })();
+  </script>
+
+</dom-module>

@@ -28,6 +28,24 @@
         height: 300px;
         width: 100%;
       }
+
+      paper-button.colorful {
+        color: #4285f4;
+      }
+
+      paper-button[raised].colorful {
+        background: #4285f4;
+        color: #fff;
+      }
+
+      paper-button.green {
+        color: var(--paper-green-500);
+        --paper-button-flat-focus-color: var(--paper-green-50);
+      }
+
+      paper-button.green:hover {
+        background: var(--paper-green-50);
+      }
     </style>
   </template>
 </dom-module>
