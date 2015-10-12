@@ -116,6 +116,13 @@
         },
 
         showMessage: function() {
+          var isNumber = event.keyCode >= 48 && event.keyCode <= 57;
+          var isLetter = event.keyCode >= 65 && event.keyCode <= 90;
+
+          if (!isNumber && !isLetter) {
+            return;
+          }
+
           this.lastChange = Date.now();
           var waitDuration = 1000;
           var t = this;

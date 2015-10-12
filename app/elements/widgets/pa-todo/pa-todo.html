@@ -2,6 +2,7 @@
 
 <dom-module id="pa-todo">
   <template>
+    <style include="shared-styles"></style>
     <style>
       .todo-list {
         height: 252px;
@@ -20,9 +21,20 @@
       .sign-in-msg {
         font-size: 14px;
       }
+
+      .sign-in-msg iron-icon {
+        color: var(--paper-amber-900);
+        margin-right: 7px;
+        margin-bottom: 3px;
+        --iron-icon-height: 16px;
+        --iron-icon-width: 16px;
+      }
     </style>
 
-    <div class="sign-in-msg" show$="{{!user}}">Please, <a href="javascript:void(0)" on-click="signInClick">sign in</a> to use ToDo List</div>
+    <div class="sign-in-msg" show$="{{!user}}">
+      <p><iron-icon icon="info-outline"></iron-icon>This app is using Firebase to store data. Please, sign in to use ToDo list.</p>
+      <paper-button raised class="colorful" on-click="signInClick">Sign in</paper-button>
+    </div>
     <div class="todo-block" show$="{{user}}">
       <paper-input placeholder="Add a to-do" no-label-float id="todoInput"></paper-input>
 

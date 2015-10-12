@@ -1,0 +1,9 @@
+{
+  "firebase": "polymer-admin",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
