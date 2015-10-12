@@ -1,0 +1,164 @@
+<dom-module id="pa-auth-info">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding-right: 24px;
+      }
+
+      a.singin-link {
+        text-transform: uppercase;
+        color: var(--text-primary-color);
+        text-decoration: none;
+        font-size: 14px;
+        display: none;
+      }
+
+      a.singin-link[show] {
+        display: block;
+      }
+
+      a.singin-link:hover {
+      }
+
+      .account-menu {
+        position: relative;
+        display: none;
+      }
+
+      .account-menu[show] {
+        display: block;
+      }
+
+      .profile-pic {
+        width: 45px;
+        height: 45px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .profile-pic img {
+        width: 100%;
+      }
+
+      .dropdown-content {
+        display: block;
+        position: relative;
+        border-radius: 2px;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        background: white;
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        min-width: 140px;
+        color: var(--primary-text-color);
+      }
+
+      .username {
+        margin-bottom: 12px;
+      }
+
+      .dropdown-content a {
+        display: block;
+        position: relative;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 32px;
+        white-space: nowrap;
+        align-items: center;
+        color: var(--primary-text-color);
+      }
+
+      .dropdown-content a:hover {
+        color: var(--default-primary-color);
+      }
+    </style>
+
+    <a href="javascript:void(0)" show$="{{!user}}" class="singin-link" on-click="signInClick">Sign in</a>
+    <div class="account-menu" show$="{{user}}">
+      <div class="profile-pic dropdown-trigger" on-click="open">
+        <img src="{{profile.picture}}">
+      </div>
+
+      <iron-dropdown id="dropdown"
+                     vertical-align="top"
+                     horizontal-align="right"
+                     open-animation-config="[[openAnimationConfig]]"
+                     close-animation-config="[[closeAnimationConfig]]">
+
+        <div class="dropdown-content">
+          <div class="username"><span>{{profile.name}}</span> <span>{{profile.lastname}}</span></div>
+          <a data-route="user-profile" href="/user-profile" on-click="close">Profile</a>
+          <a href="javascript:void(0)" on-click="signOutClick">Sign out</a>
+        </div>
+
+      </iron-dropdown>
+    </div>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-auth-info',
+
+        properties: {
+          profile: {
+            type: Object
+          },
+          openAnimationConfig: {
+            type: Array,
+            value: function() {
+              return [{
+                name: 'fade-in-animation',
+                timing: {
+                  delay: 150,
+                  duration: 50
+                }
+              }, {
+                name: 'expand-animation',
+                timing: {
+                  delay: 150,
+                  duration: 200
+                }
+              }];
+            }
+          },
+
+          closeAnimationConfig: {
+            type: Array,
+            value: function() {
+              return [{
+                name: 'fade-out-animation',
+                timing: {
+                  duration: 200
+                }
+              }];
+            }
+          }
+        },
+
+        signOutClick: function() {
+          this.close();
+          this.fire('sign-out');
+        },
+
+        signInClick: function() {
+          this.fire('sign-in');
+        },
+
+        open: function() {
+          this.$.dropdown.open();
+        },
+
+        close: function() {
+          this.$.dropdown.close();
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

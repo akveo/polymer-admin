@@ -1,0 +1,32 @@
+<link rel="import" href="widgets/pa-basic-table.html">
+
+<dom-module id="pa-tables">
+  <template>
+    <style include="shared-styles"></style>
+
+    <pa-widgets widgets="{{widgets}}"></pa-widgets>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-tables',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: [
+              {
+                title: 'Basic Table',
+                component: 'pa-basic-table'
+              }
+            ]
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

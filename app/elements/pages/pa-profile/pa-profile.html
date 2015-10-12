@@ -1,0 +1,135 @@
+<link rel="import" href="pa-profile-picture.html">
+
+<dom-module id="pa-profile">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      .widget {
+        height: auto;
+      }
+
+      .line {
+        margin-bottom: 40px;
+        min-width: 150px;
+      }
+
+      .line span {
+        margin-left: 24px;
+      }
+
+      .notifications-block {
+        padding-top: 18px;
+      }
+
+      pa-profile-picture {
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      paper-toast {
+        z-index: 2;
+        background: var(--default-primary-color);
+      }
+    </style>
+
+    <pa-simple-grid>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>General Information</h3>
+
+          <pa-profile-picture profile="{{profile}}"></pa-profile-picture>
+
+          <pa-simple-grid md-cols="2">
+            <div>
+              <paper-input label="First Name" value="{{ profile.name }}" id="profileName" auto-validate required on-keyup="showMessage"></paper-input>
+              <paper-input label="Last Name" value="{{ profile.lastname }}" auto-validate required on-keyup="showMessage"></paper-input>
+            </div>
+            <div>
+              <paper-input label="Department" value="{{ profile.department }}" value="" on-keyup="showMessage"></paper-input>
+              <paper-input label="Job Title" value="{{ profile.job }}" on-keyup="showMessage"></paper-input>
+            </div>
+          </pa-simple-grid>
+
+        </paper-material>
+      </div>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Contact Information</h3>
+          <pa-simple-grid md-cols="2">
+            <div>
+              <gold-email-input label="Email" value="{{ profile.email }}" auto-validate on-keyup="showMessage"></gold-email-input>
+              <gold-phone-input label="Phone" value="{{ profile.phone }}" auto-validate on-keyup="showMessage"></gold-phone-input>
+            </div>
+            <div>
+              <paper-input label="Office Location" value="{{ profile.office }}" on-keyup="showMessage"></paper-input>
+              <paper-input label="Room" value="{{ profile.room }}" on-keyup="showMessage"></paper-input>
+            </div>
+          </pa-simple-grid>
+        </paper-material>
+      </div>
+
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Send Email Notifications</h3>
+          <pa-simple-grid md-cols="2" class="notifications-block">
+            <div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.message}}" on-change="showMessage"></paper-toggle-button><span>When I receive a message</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.invitation}}" on-change="showMessage"></paper-toggle-button><span>When Someone sends me an invitation</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.changes}}" on-change="showMessage"></paper-toggle-button><span>When profile information changes</span></div>
+            </div>
+            <div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.login}}" on-change="showMessage"></paper-toggle-button><span>When anyone logs into your account from a new device or browser</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.weekly}}" on-change="showMessage"></paper-toggle-button><span>Weekly Reports</span></div>
+              <div class="line"><paper-toggle-button checked="{{profile.notification.daily}}" on-change="showMessage"></paper-toggle-button><span>Daily Reports</span></div>
+            </div>
+          </pa-simple-grid>
+        </paper-material>
+      </div>
+
+    </pa-simple-grid>
+
+    <paper-toast id="saveDataMsg" text="Your data has been saved."></paper-toast>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-profile',
+
+        properties: {
+          profile: {
+            type: Object
+          },
+
+          lastChange: {
+            type: Number
+          }
+        },
+
+        showMessage: function() {
+          var isNumber = event.keyCode >= 48 && event.keyCode <= 57;
+          var isLetter = event.keyCode >= 65 && event.keyCode <= 90;
+
+          if (!isNumber && !isLetter) {
+            return;
+          }
+
+          this.lastChange = Date.now();
+          var waitDuration = 1000;
+          var t = this;
+
+          window.setTimeout(function(){
+            if (Date.now() - t.lastChange >= waitDuration) {
+              document.querySelector('#saveDataMsg').show();
+            }
+          }, waitDuration);
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

@@ -1,0 +1,52 @@
+<dom-module id="pa-news">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host::shadow .google-feeds-wrapper {
+        height: 280px;
+        overflow-y: scroll;
+        margin-top: 24px;
+      }
+      :host::shadow .gfc-resultsHeader {
+        border: none;
+      }
+      :host::shadow .gf-title {
+        margin-bottom: 2px;
+      }
+      :host::shadow .gf-title a {
+        color: var(--default-primary-color);
+        text-decoration: none;
+      }
+      :host::shadow .gf-result .gf-relativePublishedDate {
+        font-size: 12px;
+        display: block;
+        margin-bottom: 6px;;
+      }
+      :host::shadow .gf-snippet {
+        font-size: 14px;
+      }
+      :host::shadow .gfc-result {
+        margin-bottom: 18px;
+      }
+    </style>
+
+    <div class="google-feeds-wrapper">
+      <google-feeds id="feeder"></google-feeds>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-news',
+
+        ready: function() {
+          this.$.feeder.feeds = ['http://blog.polymer-project.org/feed.xml'];
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

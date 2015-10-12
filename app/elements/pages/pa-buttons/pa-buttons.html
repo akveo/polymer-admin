@@ -1,0 +1,57 @@
+<link rel="import" href="widgets/pa-paper-buttons.html">
+<link rel="import" href="widgets/pa-paper-fab.html">
+<link rel="import" href="widgets/pa-toggle-buttons.html">
+<link rel="import" href="widgets/pa-icon-buttons.html">
+
+<dom-module id="pa-buttons">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host::shadow .widget {
+        height: auto !important;  // todo: remove important
+        min-height: 460px;
+      }
+    </style>
+
+    <pa-widgets widgets="{{widgets}}" cols="{{cols}}"></pa-widgets>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-buttons',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: [
+              {
+                title: 'Buttons',
+                component: 'pa-paper-buttons'
+              },
+
+              {
+                title: 'Paper Fab',
+                component: 'pa-paper-fab'
+              },
+
+              {
+                title: 'Icon Buttons',
+                component: 'pa-icon-buttons'
+              },
+
+              {
+                title: 'Toggle Button',
+                component: 'pa-toggle-buttons'
+              }
+            ]
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

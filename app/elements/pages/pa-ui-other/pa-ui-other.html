@@ -1,0 +1,45 @@
+<link rel="import" href="widgets/pa-sliders.html">
+<link rel="import" href="widgets/pa-dialog.html">
+
+<dom-module id="pa-ui-other">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host::shadow .widget {
+        height: auto !important;  // todo: remove important
+        min-height: 460px;
+      }
+    </style>
+
+    <pa-widgets widgets="{{widgets}}" cols="{{cols}}"></pa-widgets>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-ui-other',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: [
+              {
+                title: 'Sliders',
+                component: 'pa-sliders'
+              },
+
+              {
+                title: 'Paper Dialog',
+                component: 'pa-dialog'
+              }
+            ]
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

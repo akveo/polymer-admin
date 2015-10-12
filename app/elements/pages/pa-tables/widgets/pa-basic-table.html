@@ -1,0 +1,22 @@
+<link rel="import" href="pa-table.html">
+
+<dom-module id="pa-basic-table">
+  <template>
+    <style include="shared-styles"></style>
+
+    <pa-table
+        headers='["#", "First Name", "Last Name", "Username", "Email", "Age"]'
+        data='[ [1, "Mark", "Otto", "@mdo", "mdo@gmail.com", "28"], [2, "Jacob", "Thornton", "@fat", "fat@yandex.ru", "45"], [3, "Larry", "Bird", "@twitter", "twitter@outlook.com", "18"], [4, "John", "Snow", "@snow", "snow@gmail.com", "20"], [5, "Jack", "Sparrow", "@jack", "jack@yandex.ru", "30"], [6, "Ann", "Smith", "@ann", "ann@gmail.com", "21"], [7, "Barbara", "Black", "@barbara", "barbara@yandex.ru", "43"], [8, "Sevan", "Bagrat", "@sevan", "sevan@outlook.com", "13"], [9, "Ruben", "Vardan", "@ruben", "ruben@gmail.com", "22"], [10, "Karen", "Sevan", "@karen", "karen@yandex.ru", "33"], [11, "Mark", "Otto", "@mark", "mark@gmail.com", "38"], [12, "Jacob", "Thornton", "@jacob", "jacob@yandex.ru", "48"], [13, "Haik", "Hakob", "@haik", "haik@outlook.com", "48"], [14, "Garegin", "Jirair", "@garegin", "garegin@gmail.com", "40"], [15, "Krikor", "Bedros", "@krikor", "krikor@yandex.ru", "32"] ]'            ></pa-table>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-basic-table'
+      });
+    })();
+  </script>
+
+</dom-module>

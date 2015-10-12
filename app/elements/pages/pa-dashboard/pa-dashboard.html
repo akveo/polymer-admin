@@ -1,0 +1,59 @@
+<link rel="import" href="widgets/pa-todo/pa-todo.html">
+<link rel="import" href="widgets/pa-about.html">
+<link rel="import" href="widgets/pa-combo-chart.html">
+<link rel="import" href="widgets/pa-news.html">
+
+<dom-module id="pa-dashboard">
+  <template>
+    <style include="shared-styles"></style>
+
+    <pa-simple-grid sm-cols="1" md-cols$='{{cols}}'>
+
+      <pa-widget widget="{{ widgets.comboChart}}"></pa-widget>
+
+      <!-- todo: pass component with params to pa-widget if possible -->
+      <div>
+        <paper-material class="widget" elevation="1">
+          <h3>Todo List</h3>
+          <pa-todo todos="{{todos}}" user="{{user}}"></pa-todo>
+        </paper-material>
+      </div>
+
+      <pa-widget widget="{{ widgets.news }}"></pa-widget>
+      <pa-widget widget="{{ widgets.about }}"></pa-widget>
+
+    </pa-simple-grid>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-dashboard',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: {
+              comboChart: {
+                title: 'Combo Chart',
+                component: 'pa-combo-chart'
+              },
+              news: {
+                title: 'Latest News',
+                component: 'pa-news'
+              },
+              about: {
+                title: 'About Polymer Admin',
+                component: 'pa-about'
+              }
+            }
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

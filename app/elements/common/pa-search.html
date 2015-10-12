@@ -1,0 +1,106 @@
+<dom-module id="pa-search">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+
+      :host > paper-icon-button {
+        margin-right: 13px;
+      }
+
+      .pa-search-form {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 0 40px 0 74px;
+        box-sizing: border-box;
+        background: var(--default-primary-color);
+        z-index: 2;
+      }
+
+      .pa-search-form[show] {
+        display: block;
+      }
+
+      .search-input {
+        width: 100%;
+        top: 20%;
+        position: relative;
+      }
+
+      .search-action {
+        position: absolute;
+        top: 22%;
+        left: 8px;;
+      }
+
+      :host::shadow .paper-input-container-0 .input-content.paper-input-container input {
+        color: var(--text-primary-color);
+      }
+
+      :host::shadow .paper-input-container-0 .unfocused-line.paper-input-container {
+        background: transparent;
+      }
+
+      :host::shadow .paper-input-container-0 .focused-line.paper-input-container {
+        background: var(--text-primary-color);
+      }
+
+    </style>
+
+    <paper-icon-button icon="search" on-click="showSearch"></paper-icon-button>
+    <div class="pa-search-form" show$="{{show}}">
+      <paper-icon-button icon="search" class="search-action" on-mousedown="searchInGoogle"></paper-icon-button>
+      <paper-input id="searchInput" no-label-float class="search-input" value="{{inputValue}}" on-keyup="searchOnEnter" on-blur="hideSearch"></paper-input>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-search',
+
+        properties: {
+          show: {
+            type: Boolean,
+            value: false
+          },
+          inputValue: {
+            type: String,
+            value: ''
+          }
+        },
+
+        focusSearchInput: function() {
+          document.getElementById('searchInput').$.input.focus();
+        },
+
+        showSearch: function() {
+          this.show = true;
+          this.focusSearchInput();
+        },
+
+        hideSearch: function() {
+          this.show = false;
+        },
+
+        searchInGoogle: function() {
+          this.show = false;
+          window.open('https://www.google.com/search?q=' + this.inputValue);
+          this.inputValue = '';
+        },
+
+        searchOnEnter: function(e) {
+          if (e.keyCode === 13) {
+            this.searchInGoogle();
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

@@ -1,0 +1,50 @@
+<link rel="import" href="widgets/pa-checkboxes.html">
+<link rel="import" href="widgets/pa-radio-buttons.html">
+<link rel="import" href="widgets/pa-text-inputs.html">
+<link rel="import" href="widgets/pa-inputs-validation.html">
+
+<dom-module id="pa-form-elements">
+  <template>
+    <style include="shared-styles"></style>
+
+    <pa-widgets widgets="{{widgets}}" cols="{{cols}}"></pa-widgets>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-form-elements',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: [
+              {
+                title: 'Text Input',
+                component: 'pa-text-inputs'
+              },
+
+              {
+                title: 'Validation',
+                component: 'pa-inputs-validation'
+              },
+
+              {
+                title: 'Checkbox',
+                component: 'pa-checkboxes'
+              },
+
+              {
+                title: 'Radio',
+                component: 'pa-radio-buttons'
+              }
+            ]
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

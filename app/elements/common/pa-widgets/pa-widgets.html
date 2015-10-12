@@ -1,0 +1,26 @@
+<link rel="import" href="pa-widget.html">
+
+<dom-module id="pa-widgets">
+  <template>
+    <style include="shared-styles"></style>
+
+    <pa-simple-grid sm-cols="1" md-cols$='{{cols}}'>
+
+      <template is="dom-repeat" items="{{widgets}}">
+        <pa-widget widget="{{item}}"></pa-widget>
+      </template>
+
+    </pa-simple-grid>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-widgets'
+      });
+    })();
+  </script>
+
+</dom-module>

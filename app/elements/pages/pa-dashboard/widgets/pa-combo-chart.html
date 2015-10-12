@@ -1,0 +1,30 @@
+<dom-module id="pa-combo-chart">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+
+    </style>
+
+    <google-chart
+        type='combo'
+        options='{"seriesType": "bars", "series": {"2": {"type": "line"}}}'
+        data='[ ["Day", "A", "B", "C"],
+                       ["Mon", 20, 45, 28],
+                       ["Tue", 31, 66, 38],
+                       ["Wed", 50, 80, 55],
+                       ["Thu", 77, 50, 77],
+                       ["Fri", 68, 15, 66] ]'>
+    </google-chart>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-combo-chart'
+      });
+    })();
+  </script>
+
+</dom-module>

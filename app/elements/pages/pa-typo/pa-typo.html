@@ -1,0 +1,38 @@
+<link rel="import" href="widgets/pa-typo-content.html">
+
+<dom-module id="pa-typo">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host::shadow .widget {
+        height: auto !important; // todo: remove important
+      }
+    </style>
+
+    <pa-widgets widgets="{{widgets}}"></pa-widgets>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-typo',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: [
+              {
+                title: '',
+                component: 'pa-typo-content'
+              }
+            ]
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

@@ -1,14 +1,4 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
-
 <html lang="">
 
 <head>
@@ -39,10 +29,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <!-- Tile icon for Win8 (144x144) -->
   <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-
-  <!-- build:css styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css">
-  <!-- endbuild-->
 
   <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
   <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
@@ -76,114 +62,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <paper-drawer-panel id="paperDrawerPanel">
 
       <paper-scroll-header-panel drawer>
-        <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
 
-          <a data-route="dashboard" href="/" on-click="onDataRouteClick">
-            <iron-icon icon="dashboard"></iron-icon>
-            <span>Dashboard</span>
-          </a>
-
-          <a data-route="charts" href="/charts" on-click="onDataRouteClick">
-            <iron-icon icon="trending-up"></iron-icon>
-            <span>Charts</span>
-          </a>
-
-          <a data-route="form-elements" href="/form-elements" on-click="onDataRouteClick">
-            <iron-icon icon="input"></iron-icon>
-            <span>Form Elements</span>
-          </a>
-
-          <paper-submenu id="ui-elements-menu">
-            <paper-item class="menu-trigger" on-click="toggleSubmenu">
-              <iron-icon icon="hardware:laptop"></iron-icon>
-              <span class="flex">UI Elements</span>
-              <iron-icon icon="hardware:keyboard-arrow-down" class="arow-down"></iron-icon>
-            </paper-item>
-            <paper-menu class="menu-content sublist">
-              <a data-route="typo" href="/typo" on-click="onDataRouteClick">
-                <iron-icon icon="text-format"></iron-icon>
-                <span>Typography</span>
-              </a>
-              <a data-route="buttons" href="/buttons" on-click="onDataRouteClick">
-                <iron-icon icon="arrow-forward"></iron-icon>
-                <span>Buttons</span>
-              </a>
-              <a data-route="ui-other" href="/ui-other" on-click="onDataRouteClick">
-                <iron-icon icon="favorite-border"></iron-icon>
-                <span>Other UI Elements</span>
-              </a>
-            </paper-menu>
-          </paper-submenu>
-
-          <a data-route="maps" href="/maps" on-click="onDataRouteClick">
-            <iron-icon icon="maps:pin-drop"></iron-icon>
-            <span>Maps</span>
-          </a>
-
-          <a data-route="tables" href="/tables" on-click="onDataRouteClick">
-            <iron-icon icon="apps"></iron-icon>
-            <span>Tables</span>
-          </a>
-
-          <a data-route="user-profile" href="/user-profile" on-click="onDataRouteClick" hide$="{{!user}}">
-            <iron-icon icon="account-box"></iron-icon>
-            <span>User Profile</span>
-          </a>
-
-        </paper-menu>
+        <pa-menu route="{{route}}"></pa-menu>
 
       </paper-scroll-header-panel>
 
       <paper-scroll-header-panel main>
 
-        <iron-pages attr-for-selected="data-route" selected="{{route}}">
-
-          <section data-route="dashboard">
-            <pa-widget-title title="Dashboard" cols='{{cols}}'></pa-widget-title>
-            <pa-dashboard cols='{{cols}}' todos="{{todos}}" user="{{user}}" on-sign-in="signIn"></pa-dashboard>
-          </section>
-
-          <section data-route="charts">
-            <pa-widget-title title="Charts" cols='{{cols}}'></pa-widget-title>
-            <pa-charts cols='{{cols}}'></pa-charts>
-          </section>
-
-          <section data-route="tables">
-            <pa-widget-title title="Tables" cols='{{cols}}'></pa-widget-title>
-            <pa-tables cols='{{cols}}'></pa-tables>
-          </section>
-
-          <section data-route="form-elements">
-            <pa-widget-title title="Form Elements" cols='{{cols}}'></pa-widget-title>
-            <pa-form-elements cols='{{cols}}'></pa-form-elements>
-          </section>
-
-          <section data-route="typo">
-            <pa-widget-title title="Typography" cols='{{cols}}'></pa-widget-title>
-            <pa-typo cols='{{cols}}'></pa-typo>
-          </section>
-
-          <section data-route="buttons">
-            <pa-widget-title title="Buttons" cols='{{cols}}'></pa-widget-title>
-            <pa-page-buttons cols='{{cols}}'></pa-page-buttons>
-          </section>
-
-          <section data-route="ui-other">
-            <pa-widget-title title="Other UI Elements" cols='{{cols}}'></pa-widget-title>
-            <pa-ui-other cols='{{cols}}'></pa-ui-other>
-          </section>
-
-          <section data-route="maps">
-            <pa-widget-title title="Maps" cols='{{cols}}'></pa-widget-title>
-            <pa-maps cols='{{cols}}'></pa-maps>
-          </section>
-
-          <section data-route="user-profile">
-            <pa-widget-title title="User Profile" cols='{{cols}}'></pa-widget-title>
-            <pa-user-profile cols='{{cols}}' profile="{{profile}}"></pa-user-profile>
-          </section>
-
-        </iron-pages>
+        <pa-pages route="{{route}}" user="{{user}}" profile='{{profile}}' todos="{{todos}}"></pa-pages>
 
         <pa-footer></pa-footer>
       </paper-scroll-header-panel>

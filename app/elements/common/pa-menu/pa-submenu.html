@@ -1,0 +1,65 @@
+<dom-module id="pa-submenu">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      paper-submenu paper-item {
+        font-size: 14px;
+        cursor: pointer;
+        outline: none;
+        white-space: nowrap;
+        width: 255px;
+        box-sizing: border-box;
+      @apply(--layout);
+      @apply(--layout-horizontal);
+      }
+
+      .arow-down {
+        margin-right: 0;
+      }
+
+      paper-submenu paper-menu {
+        background: var(--drawer-submenu-background);
+        padding: 0;
+        height: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+      }
+
+      paper-submenu .submenu-expanded + paper-menu {
+        height: auto;
+        max-height: 300px;
+      }
+    </style>
+
+    <paper-submenu id="ui-elements-menu">
+      <paper-item class="menu-trigger" on-click="toggleSubmenu">
+        <iron-icon icon="{{submenu.icon}}"></iron-icon>
+        <span class="flex">{{submenu.title}}</span>
+        <iron-icon icon="hardware:keyboard-arrow-down" class="arow-down"></iron-icon>
+      </paper-item>
+      <paper-menu class="menu-content sublist">
+
+        <template is="dom-repeat" items="{{submenu.submenu}}">
+          <pa-menu-item item="{{item}}"></pa-menu-item>
+        </template>
+
+      </paper-menu>
+    </paper-submenu>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-submenu',
+
+        toggleSubmenu: function(e) {
+          e.target.parentNode.classList.toggle('submenu-expanded');
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

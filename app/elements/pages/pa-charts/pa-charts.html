@@ -1,0 +1,50 @@
+<link rel="import" href="widgets/pa-area-chart.html">
+<link rel="import" href="widgets/pa-bar-chart.html">
+<link rel="import" href="widgets/pa-geo-chart.html">
+<link rel="import" href="widgets/pa-pie-chart.html">
+
+<dom-module id="pa-charts">
+  <template>
+    <style include="shared-styles"></style>
+
+    <pa-widgets widgets="{{widgets}}" cols="{{cols}}"></pa-widgets>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-charts',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: [
+              {
+                title: 'Pie Chart',
+                component: 'pa-pie-chart'
+              },
+
+              {
+                title: 'Area Chart',
+                component: 'pa-area-chart'
+              },
+
+              {
+                title: 'Bar chart',
+                component: 'pa-bar-chart'
+              },
+
+              {
+                title: 'Geo Chart',
+                component: 'pa-geo-chart'
+              }
+            ]
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

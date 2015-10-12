@@ -1,0 +1,78 @@
+<dom-module id="pa-pages">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      iron-pages {
+        padding: 24px 16px 56px;
+        min-height: 100%;
+        box-sizing: border-box;
+      }
+
+      @media (min-width: 640px) {
+        iron-pages {
+          padding: 24px 36px 56px;
+        }
+      }
+    </style>
+
+    <iron-pages attr-for-selected="data-route" selected="{{route}}">
+
+      <section data-route="dashboard">
+        <pa-page-title title="Dashboard" cols='{{cols}}'></pa-page-title>
+        <pa-dashboard cols='{{cols}}' todos="{{todos}}" user="{{user}}" on-sign-in="signIn"></pa-dashboard>
+      </section>
+
+      <section data-route="charts">
+        <pa-page-title title="Charts" cols='{{cols}}'></pa-page-title>
+        <pa-charts cols='{{cols}}'></pa-charts>
+      </section>
+
+      <section data-route="tables">
+        <pa-page-title title="Tables" cols='{{cols}}'></pa-page-title>
+        <pa-tables cols='{{cols}}'></pa-tables>
+      </section>
+
+      <section data-route="form-elements">
+        <pa-page-title title="Form Elements" cols='{{cols}}'></pa-page-title>
+        <pa-form-elements cols='{{cols}}'></pa-form-elements>
+      </section>
+
+      <section data-route="typo">
+        <pa-page-title title="Typography" cols='{{cols}}'></pa-page-title>
+        <pa-typo cols='{{cols}}'></pa-typo>
+      </section>
+
+      <section data-route="buttons">
+        <pa-page-title title="Buttons" cols='{{cols}}'></pa-page-title>
+        <pa-buttons cols='{{cols}}'></pa-buttons>
+      </section>
+
+      <section data-route="ui-other">
+        <pa-page-title title="Other UI Elements" cols='{{cols}}'></pa-page-title>
+        <pa-ui-other cols='{{cols}}'></pa-ui-other>
+      </section>
+
+      <section data-route="maps">
+        <pa-page-title title="Maps" cols='{{cols}}'></pa-page-title>
+        <pa-maps cols='{{cols}}'></pa-maps>
+      </section>
+
+      <section data-route="user-profile">
+        <pa-page-title title="User Profile" cols='{{cols}}'></pa-page-title>
+        <pa-profile cols='{{cols}}' profile="{{profile}}"></pa-profile>
+      </section>
+
+    </iron-pages>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-pages'
+      });
+    })();
+  </script>
+
+</dom-module>

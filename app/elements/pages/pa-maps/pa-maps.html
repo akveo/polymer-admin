@@ -1,0 +1,38 @@
+<link rel="import" href="widgets/pa-google-map.html">
+<link rel="import" href="widgets/pa-leaflet.html">
+
+<dom-module id="pa-maps">
+  <template>
+    <style include="shared-styles"></style>
+
+    <pa-widgets widgets="{{widgets}}" cols="{{cols}}"></pa-widgets>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-maps',
+
+        properties: {
+          widgets: {
+            type: Array,
+            value: [
+              {
+                title: 'Google Maps',
+                component: 'pa-google-map'
+              },
+
+              {
+                title: 'Leaflet Map',
+                component: 'pa-leaflet'
+              }
+            ]
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

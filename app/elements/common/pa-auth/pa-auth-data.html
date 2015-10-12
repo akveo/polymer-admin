@@ -1,0 +1,107 @@
+<dom-module id="pa-auth-data">
+  <template>
+    <firebase-auth id="auth"
+                   location="{{location}}"
+                   provider="google"
+                   user="{{user}}">
+    </firebase-auth>
+
+    <firebase-collection location="{{todosLocation}}"
+                         data="{{fbTodos}}"
+                         on-firebase-value="_firebaseTodoLoaded">
+    </firebase-collection>
+
+    <firebase-document id="fbDoc"
+                       location="{{profileLocation}}"
+                       data="{{profile}}"
+                       on-firebase-value="_firebaseProfileLoaded">
+    </firebase-document>
+
+    <firebase-element></firebase-element>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+      Polymer({
+        is: 'pa-auth-data',
+
+        properties: {
+          user: {
+            observer: '_userChanged',
+            notify: true
+          },
+
+          _firebaseConnected: {
+            value: false
+          },
+
+          todos: {
+            type: Array,
+            notify: true
+          },
+
+          profile: {
+            type: Object,
+            notify: true
+          }
+        },
+
+        signIn: function() {
+          this.$.auth.login();
+        },
+
+        signOut: function() {
+          var ref = new Firebase(this.location);
+          ref.unauth();
+          this.user = null;
+        },
+
+        // Setup user ref in firebase if auth succeeds
+        _userChanged: function(user) {
+          if (user) {
+            this.todosLocation = [this.location, 'todos', this.user.uid].join('/');
+            this.profileLocation = [this.location, 'profile', this.user.uid].join('/');
+          }
+        },
+
+        setDefaultProfile: function() {
+          this.profile = {
+            name: this.user.google.cachedUserProfile.given_name,
+            lastname: this.user.google.cachedUserProfile.family_name,
+            email: '',
+            phone: '',
+            picture: this.user.google.cachedUserProfile.picture,
+            department: '',
+            job: '',
+            office: '',
+            room: '',
+            notification: {
+              message: true,
+              invitation: true,
+              changes: false,
+              login: false,
+              weekly: true,
+              daily: false
+            }
+          };
+        },
+
+        _firebaseProfileLoaded: function() {
+          this.set('profile', this.profile);
+          if (!this.profile) {
+           this.setDefaultProfile();
+          }
+        },
+
+        _firebaseTodoLoaded: function() {
+          this._firebaseConnected = true;
+          this.todos = this.fbTodos;
+          this.linkPaths('fbTodos', 'todos');
+        }
+
+      });
+    })();
+  </script>
+
+</dom-module>

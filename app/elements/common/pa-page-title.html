@@ -1,0 +1,90 @@
+<dom-module id="pa-page-title">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      :host {
+        margin-right: -15px;
+        padding-bottom: 12px;
+        @apply(--layout);
+        @apply(--layout-horizontal);
+      }
+
+      h2 {
+        margin: 0;
+        display: inline-block;
+        font-size: 36px;
+      }
+
+      paper-icon-button {
+        padding: 12px;
+        --iron-icon-height: 24px;
+        --iron-icon-width: 24px;
+      }
+
+      paper-icon-button::shadow iron-icon {
+        color: var(--default-icon-color);
+      }
+
+      paper-icon-button[selected]::shadow iron-icon {
+        color: var(--default-icon-selected)
+      }
+    </style>
+
+    <h2>{{ title }}</h2>
+    <span class="flex"></span>
+    <paper-icon-button icon="view-module" selected$="{{colsview}}" on-click="setColsView"></paper-icon-button>
+    <paper-icon-button icon="view-stream" selected$="{{!colsview}}" on-click="setStreamView"></paper-icon-button>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-page-title',
+
+        properties: {
+          title: {
+            type: String,
+            value: 'Page Title'
+          },
+
+          cols: {
+            type: String,
+            value: '2',
+            notify: true
+          },
+
+          colsview: {
+            type: Boolean,
+            value: true,
+            computed: '_computeView(cols)',
+            notify: true
+          }
+        },
+
+        _computeView: function(cols) {
+          return cols === '2';
+        },
+
+        setColsView: function() {
+          this.cols = '2';
+          this.resizeCharts();
+        },
+
+        setStreamView: function() {
+          this.cols = '1';
+          this.resizeCharts();
+        },
+
+        resizeCharts: function() {
+          var charts = document.getElementsByTagName('google-chart');
+          for (var i = 0; i < charts.length; i++) {
+            charts[i].drawChart();
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

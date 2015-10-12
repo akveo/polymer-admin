@@ -1,0 +1,64 @@
+<dom-module id="pa-sliders">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      paper-slider {
+        width: 100%;
+      }
+
+      paper-slider.blue {
+        --paper-slider-knob-color: var(--paper-light-blue-500);
+        --paper-slider-active-color: var(--paper-light-blue-500);
+      }
+
+      paper-slider.red {
+        --paper-slider-knob-color: var(--paper-red-500);
+        --paper-slider-active-color: var(--paper-red-500);
+      }
+
+      paper-slider.green {
+        --paper-slider-knob-color: var(--paper-green-500);
+        --paper-slider-active-color: var(--paper-green-500);
+      }
+
+      paper-slider.orange {
+        --paper-slider-knob-color: var(--paper-orange-500);
+        --paper-slider-active-color: var(--paper-orange-500);
+        --paper-slider-pin-color: var(--paper-orange-500);
+      }
+
+      #ratingsLabel {
+        padding-left: 12px;
+        color: var(--divider-color);
+      }
+    </style>
+
+    <div class="vertical-section">
+      <div>Oxygen</div>
+      <paper-slider value="21" id="test"></paper-slider><br><br>
+
+      <div>Brightness</div>
+      <paper-slider pin value="54" class="orange"></paper-slider><br><br>
+
+      <div>Ratings: <span id="ratingsLabel"></span></div>
+      <paper-slider id="ratings" pin snaps max="10" step="1" value="5" class="orange"></paper-slider><br><br>
+
+      <div>Sprinkles</div>
+      <paper-slider disabled value="33"></paper-slider><br><br>
+
+      <div>Argon</div>
+      <paper-slider class="red" value="82" editable></paper-slider><br><br>
+    </div>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-sliders'
+      });
+    })();
+  </script>
+
+</dom-module>

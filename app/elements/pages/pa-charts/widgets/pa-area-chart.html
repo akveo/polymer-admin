@@ -1,0 +1,23 @@
+<dom-module id="pa-area-chart">
+  <template>
+    <style include="shared-styles"></style>
+
+    <google-chart
+        type='area'
+        options='{"title": "Days in a month"}'
+        cols='[{"label": "Month", "type": "string"},{"label": "Days", "type": "number"}]'
+        rows='[ ["Jan", 31],["Feb", 28],["Mar", 31],["Apr", 30],["May", 31],["Jun", 30] ]'>
+    </google-chart>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-area-chart'
+      });
+    })();
+  </script>
+
+</dom-module>

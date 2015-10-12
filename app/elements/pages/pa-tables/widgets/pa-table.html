@@ -1,0 +1,78 @@
+<dom-module id="pa-table">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      .table-container {
+        height: 300px;
+        overflow-y: auto;
+      }
+      table {
+        width: 100%;
+        max-width: 100%;
+        background-color: transparent;
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      th {
+        text-align: left;
+        font-weight: 500;
+        font-size: 12px;
+        color: var(--secondary-text-color);
+        padding: 8px;
+      }
+      td {
+        font-size: 12px;
+        color: var(--primary-text-color);
+        padding: 0 8px;
+        line-height: 35px;
+      }
+      tr:hover td {
+         background: var(--paper-indigo-50);
+      }
+    </style>
+
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <template is="dom-repeat" items="{{headers}}">
+            <th>{{item}}</th>
+          </template>
+        </tr>
+        </thead>
+        <tbody>
+        <template is="dom-repeat" items="{{data}}">
+          <tr>
+            <template is="dom-repeat" items="{{item}}">
+              <td>{{item}}</td>
+            </template>
+          </tr>
+        </template>
+        </tbody>
+      </table>
+    </div>
+
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-table',
+
+        properties: {
+          headers: {
+            type: Array,
+            value: []
+          },
+          data: {
+            type: Array,
+            value: []
+          }
+        }
+      });
+    })();
+  </script>
+
+</dom-module>
