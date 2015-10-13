@@ -1,0 +1,160 @@
+<dom-module id="pa-menu">
+  <template>
+    <style include="shared-styles"></style>
+    <style>
+      iron-icon {
+        margin-right: 33px;
+        opacity: 0.54;
+      }
+
+      .iron-selected {
+        color: var(--default-primary-color);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--menu-link-color);
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        min-height: 48px;
+        padding: 0 16px;
+        width: 255px;
+        white-space: nowrap;
+        box-sizing: border-box;
+      }
+
+      a[hide] {
+        display: none;
+      }
+
+      paper-submenu paper-item {
+        font-size: 14px;
+        cursor: pointer;
+        outline: none;
+        white-space: nowrap;
+        width: 255px;
+        box-sizing: border-box;
+        @apply(--layout);
+        @apply(--layout-horizontal);
+      }
+
+      .arow-down {
+        margin-right: 0;
+      }
+
+      paper-submenu paper-menu {
+        background: var(--drawer-submenu-background);
+        padding: 0;
+        height: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+      }
+
+      paper-submenu .submenu-expanded + paper-menu {
+        height: auto;
+        max-height: 300px;
+      }
+    </style>
+
+    <paper-menu class="list" attr-for-selected="data-route" selected="[[route]]">
+
+      <a data-route="dashboard" href="/" on-click="onDataRouteClick">
+        <iron-icon icon="dashboard"></iron-icon>
+        <span>Dashboard</span>
+      </a>
+
+      <a data-route="charts" href="/charts" on-click="onDataRouteClick">
+        <iron-icon icon="trending-up"></iron-icon>
+        <span>Charts</span>
+      </a>
+
+      <a data-route="form-elements" href="/form-elements" on-click="onDataRouteClick">
+        <iron-icon icon="input"></iron-icon>
+        <span>Form Elements</span>
+      </a>
+
+      <paper-submenu id="ui-elements-menu">
+        <paper-item class="menu-trigger" on-click="toggleSubmenu">
+          <iron-icon icon="hardware:laptop"></iron-icon>
+          <span class="flex">UI Elements</span>
+          <iron-icon icon="hardware:keyboard-arrow-down" class="arow-down"></iron-icon>
+        </paper-item>
+        <paper-menu class="menu-content sublist" attr-for-selected="data-route" selected="[[route]]">
+          <a data-route="typo" href="/typo" on-click="onDataRouteClick">
+            <iron-icon icon="text-format"></iron-icon>
+            <span>Typography</span>
+          </a>
+          <a data-route="buttons" href="/buttons" on-click="onDataRouteClick">
+            <iron-icon icon="arrow-forward"></iron-icon>
+            <span>Buttons</span>
+          </a>
+          <a data-route="ui-other" href="/ui-other" on-click="onDataRouteClick">
+            <iron-icon icon="favorite-border"></iron-icon>
+            <span>Other UI Elements</span>
+          </a>
+        </paper-menu>
+      </paper-submenu>
+
+      <a data-route="maps" href="/maps" on-click="onDataRouteClick">
+        <iron-icon icon="maps:pin-drop"></iron-icon>
+        <span>Maps</span>
+      </a>
+
+      <a data-route="tables" href="/tables" on-click="onDataRouteClick">
+        <iron-icon icon="apps"></iron-icon>
+        <span>Tables</span>
+      </a>
+
+      <a data-route="user-profile" href="/user-profile" on-click="onDataRouteClick" hide$="{{!user}}">
+        <iron-icon icon="account-box"></iron-icon>
+        <span>User Profile</span>
+      </a>
+
+    </paper-menu>
+  </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'pa-menu',
+
+        toggleSubmenu: function(e) {
+          e.target.parentNode.classList.toggle('submenu-expanded');
+        },
+
+        onDataRouteClick: function() {
+          // Close drawer after menu item is selected if drawerPanel is narrow
+          var drawerPanel = document.querySelector('#paperDrawerPanel');
+          if (drawerPanel.narrow) {
+            drawerPanel.closeDrawer();
+          }
+
+          // adjust charts to widgets size
+          var charts = document.getElementsByTagName('google-chart');
+          setTimeout(function(){
+            for (var i = 0; i < charts.length; i++) {
+              charts[i].drawChart();
+            }
+          }, 0);
+        }
+      });
+    })();
+  </script>
+
+</dom-module>

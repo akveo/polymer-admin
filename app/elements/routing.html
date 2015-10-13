@@ -47,6 +47,10 @@
       app.route = 'user-profile';
     });
 
+    page('*', scrollToTop, function() {
+      app.route = 'not-found';
+    });
+
     // add #! before urls
     page({
       hashbang: true
