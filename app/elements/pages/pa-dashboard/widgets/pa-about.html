@@ -25,6 +25,29 @@
         max-width: 250px;
         box-sizing: border-box;
       }
+
+      /*@media (max-width: 1120px) and (min-width: $resXS) {
+        @include layout-collapsed();
+      }*/
+
+      @media (max-width: 1420px) and (min-width: 1221px), (max-width: 870px) and (min-width: 770px), (max-width: 575px) {
+        .team-photo {
+          max-width: 200px;
+          overflow: hidden;
+        }
+        .team-photo img {
+          margin-left: -46px
+        }
+      }
+
+      @media (max-width: 1220px) and (min-width: 992px), (max-width: 770px) and (min-width: 641px) {
+        .team-photo {
+          display: none;
+        }
+        .team-info {
+          padding-left: 0;
+        }
+      }
     </style>
 
 
@@ -32,7 +55,7 @@
       <img src="https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xap1/t31.0-8/11227783_1068430719847926_1076901314358788503_o.jpg" >
     </div>
     <div class="team-info flex">
-      Awesome text about Polymer Admin Template and Akveo team.
+      Polymer Admin is open source responsive admin dashboard created using Polymer 1.0 and Polymer Starter Kit. It can be applied to develop admin dashboards using Polymer.
       <paper-button raised class="colorful" on-click="goToSourceCode">Source code</paper-button>
       Please, star the project on github if it was useful for you. :)
     </div>
