@@ -16,29 +16,37 @@ Check out [DEMO](https://polymer-admin.firebaseapp.com/)
 * Gulp build
 * And other features of [Polymer Starter Kit](https://github.com/PolymerElements/polymer-starter-kit)
 
-It's just a first version, but we will continue development of this template to create the whole framework that can be applied to develop admin dashboards.
+It's just a first version, but we will continue development of this template to create the whole framework that can be applied to develop admin dashboards using Polymer.
 
 ## Getting started
 
-Clone project:
+1. Clone project:
 
 ```sh
 https://github.com/akveo/polymer-admin.git
 ```
 
-Download and install [nodejs](https://nodejs.org). The version should be at or above 0.12.x.
+2. Download and install [nodejs](https://nodejs.org). The version should be at or above 0.12.x.
 
-Install gulp and bower globally.
+3. Install gulp and bower globally:
 
 ```sh
 npm install -g gulp bower
 ```
 
-Install dependencies:
+4. Install dependencies:
 
 ```sh
 npm install && bower install
 ```
+
+5. Build & vulcanize sources:
+
+```sh
+gulp
+```
+
+## Development workflow
 
 Run development web-server:
 
@@ -50,12 +58,6 @@ Run production web-server:
 
 ```sh
 gulp serve:dist
-```
-
-Build & vulcanize sources:
-
-```sh
-gulp
 ```
 
 We hope that you will will find the project useful.
