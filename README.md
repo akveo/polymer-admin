@@ -1,6 +1,8 @@
 # Polymer Admin Template
 
-Responsive admin dashboard with [Polymer 1.0](https://www.polymer-project.org/1.0/) and [Material Design](http://www.google.com/design/spec/material-design/introduction.html) based on [Polymer Starter Kit](https://github.com/PolymerElements/polymer-starter-kit). Made with ♥ by [Akveo team](http://akveo.com/).
+Responsive admin dashboard created using Polymer 1.0 and [Polymer Starter Kit](https://github.com/PolymerElements/polymer-starter-kit).
+
+Made with ♥ by [Akveo team](http://akveo.com/).
 
 ![logo](app/images/touch/chrome-touch-icon-192x192.png)
 
@@ -8,9 +10,9 @@ Check out [DEMO](https://polymer-admin.firebaseapp.com/)
 
 ## Features
 
-* Polymer 1.0
+* [Polymer 1.0](https://www.polymer-project.org/1.0/)
 * Firebase
-* Material Design
+* [Material Design](http://www.google.com/design/spec/material-design/introduction.html)
 * Gulp build
 * And other features of [Polymer Starter Kit](https://github.com/PolymerElements/polymer-starter-kit)
 
