@@ -22,29 +22,29 @@ It's just a first version, but we will continue development of this template to 
 
 1. Clone project:
 
-```sh
-https://github.com/akveo/polymer-admin.git
-```
+  ```sh
+  https://github.com/akveo/polymer-admin.git
+  ```
 
 2. Download and install [nodejs](https://nodejs.org). The version should be at or above 0.12.x.
 
 3. Install gulp and bower globally:
 
-```sh
-npm install -g gulp bower
-```
+  ```sh
+  npm install -g gulp bower
+  ```
 
 4. Install dependencies:
 
-```sh
-npm install && bower install
-```
+  ```sh
+  npm install && bower install
+  ```
 
 5. Build & vulcanize sources:
 
-```sh
-gulp
-```
+  ```sh
+  gulp
+  ```
 
 ## Development workflow
 
