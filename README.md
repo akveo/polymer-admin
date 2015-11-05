@@ -23,7 +23,7 @@ It's just a first version, but we will continue development of this template to 
 1. Clone project:
 
   ```sh
-  https://github.com/akveo/polymer-admin.git
+  git clone https://github.com/akveo/polymer-admin.git
   ```
 
 2. Download and install [nodejs](https://nodejs.org). The version should be at or above 0.12.x.
