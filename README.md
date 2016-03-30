@@ -56,6 +56,10 @@ Run production web-server:
 gulp serve:dist
 ```
 
+License
+-------------
+<a href=/LICENSE.txt" target="_blank">MIT</a> license.
+
 ## Future
 
 It's just a first version, but we will continue development of this template to create the whole framework that can be applied to develop admin dashboards using Polymer.
